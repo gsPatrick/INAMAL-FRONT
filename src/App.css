@@ -1,0 +1,51 @@
+/* src/App.css */
+
+/*
+  Estilos removidos que eram específicos para o Sider:
+  .app-sider .ant-layout-sider-children { ... }
+*/
+
+/* Estilos para o wrapper do conteúdo principal e footer */
+.site-layout-content-wrapper {
+  flex: 1; /* Faz com que esta área ocupe o espaço restante verticalmente */
+  display: flex;
+  flex-direction: column;
+  /* Não é mais necessário o margin-left que era para o Sider */
+}
+
+/* Conteúdo Principal */
+.main-content {
+  flex-grow: 1; /* Garante que o conteúdo principal expanda para preencher o espaço disponível */
+  /*
+    Se o seu Header for 'sticky' ou 'fixed',
+    você precisará adicionar um padding-top ao main-content
+    para evitar que o conteúdo comece por baixo do header.
+    A altura do header é geralmente 64px.
+  */
+  padding-top: 64px; /* Assumindo altura do Header de 64px */
+  background-color: #f0f2f5; /* Um fundo global para a área de conteúdo, se desejado */
+}
+
+/* Estilo de fundo para a área de conteúdo (já existia, pode ser mantido ou ajustado) */
+.site-layout .site-layout-background {
+  background: #fff; /* Fundo branco padrão para o conteúdo, pode ser sobrescrito */
+  min-height: 100%; /* Garante que o fundo se estenda */
+  /* O padding principal do conteúdo virá do CSS da página específica ou do .main-content */
+}
+
+/* Ajustes Globais (opcional, mas pode ser útil) */
+body, #root, .ant-layout {
+  /* Garante que tudo ocupe 100% da altura se ainda não estiver configurado em index.css */
+  min-height: 100vh;
+}
+
+#root > .ant-layout { /* Target o Layout principal diretamente dentro do #root */
+  display: flex;
+  flex-direction: column;
+}
+
+/*
+  Lembre-se de remover/ajustar `margin-left` nos seguintes arquivos:
+  - src/pages/LandingPage/LandingPage.css -> .landing-page-content
+  - src/components/Footer/Footer.css -> .app-footer-v4 (em telas de desktop)
+*/

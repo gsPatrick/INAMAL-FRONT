@@ -1,0 +1,269 @@
+/* src/pages/SobrePage/SobrePage.css */
+
+/* Reset básico e animação de entrada */
+@keyframes fadeInSmooth {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.sobre-page-minimal-layout {
+  background-color: #ffffff; /* Fundo branco puro */
+  animation: fadeInSmooth 0.7s ease-out;
+}
+
+.sobre-page-minimal-content {
+  padding: 0; /* Remover padding padrão do Content do AntD */
+  margin-left: 280px; /* LARGURA DA SIDEBAR */
+  min-height: 100vh;
+}
+
+.content-wrapper-minimal {
+  max-width: 1100px; /* Largura máxima do conteúdo para melhor leitura */
+  margin: 0 auto; /* Centralizar */
+  padding: 50px 40px; /* Padding interno do wrapper */
+}
+
+/* --- Seção Hero --- */
+.hero-section-minimal {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.main-title-minimal.ant-typography {
+  font-size: 2.8em; /* Título principal bem destacado */
+  font-weight: 700;
+  color: #1f2937; /* Um cinza bem escuro, quase preto */
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.main-title-minimal .anticon {
+  vertical-align: middle;
+}
+
+.subtitle-minimal.ant-typography {
+  font-size: 1.3em;
+  color: #4b5563; /* Cinza médio */
+  margin-bottom: 12px !important;
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.description-minimal.ant-typography {
+  font-size: 1.1em;
+  color: #6b7280; /* Cinza um pouco mais claro */
+  line-height: 1.7;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* --- Divisor --- */
+.minimal-divider.ant-divider-horizontal {
+  margin: 60px 0 !important; /* Mais espaço vertical para os divisores */
+  border-top: 1px solid #e5e7eb; /* Cor suave para o divisor */
+}
+
+/* --- Seção de Características (Como Transforma) --- */
+.features-section-minimal {
+  text-align: center; /* Centraliza o título da seção */
+}
+
+.section-title-minimal.ant-typography {
+  font-size: 2em;
+  font-weight: 600;
+  color: #21436e; /* Cor primária */
+  margin-bottom: 40px !important;
+  text-align: center;
+}
+.section-title-minimal.left-align-title {
+  text-align: left;
+}
+
+
+.feature-item-minimal {
+  text-align: left; /* Alinhamento do conteúdo de cada feature */
+  padding: 20px;
+  background-color: #f9fafb; /* Fundo muito sutil para os itens */
+  border-radius: 10px;
+  height: 100%; /* Para cards de mesma altura */
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.feature-item-minimal:hover {
+  /* box-shadow: 0 8px 25px rgba(33, 67, 110, 0.1); */
+  /* transform: translateY(-5px); */
+  /* Minimalista: talvez nenhum hover chamativo ou só uma borda */
+  border: 1px solid #d1d5db;
+}
+
+
+.feature-icon-minimal .anticon {
+  font-size: 2.8em; /* Ícones maiores e expressivos */
+  color: #21436e; /* Cor primária */
+  margin-bottom: 18px;
+  display: block; /* Para centralizar se o item for text-align:center */
+  text-align: center; /* Centraliza o ícone dentro do seu div */
+}
+/* Se quiser alinhar o ícone à esquerda e texto à direita: */
+.feature-item-minimal {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza o ícone e o título */
+  text-align: center; /* Centraliza a descrição */
+}
+.feature-icon-minimal .anticon {
+   display: inline-block; /* Ajuste se o item é flex column e center */
+}
+
+
+.feature-title-minimal.ant-typography {
+  font-size: 1.35em;
+  font-weight: 600;
+  color: #1f2937;
+  margin-top: 0;
+  margin-bottom: 10px !important;
+}
+
+.feature-description-minimal.ant-typography {
+  font-size: 1em;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+/* --- Seção do Relatório --- */
+.report-section-minimal .description-minimal {
+  text-align: left;
+  margin-left: 0;
+  max-width: none;
+  margin-bottom: 20px !important;
+}
+
+.report-image-minimal {
+  width: 100%;
+  max-width: 450px; /* Limitar tamanho da imagem */
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 20px auto; /* Centralizar em mobile */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.report-list-item-minimal.ant-list-item {
+  padding: 12px 0 !important;
+  border-bottom: none !important; /* Remover bordas dos itens da lista */
+}
+
+.report-list-icon .anticon {
+  font-size: 1.5em;
+  color: #21436e; /* Cor primária para ícones da lista */
+  margin-right: 12px; /* Espaço entre ícone e texto */
+  vertical-align: top; /* Alinhar ícone com topo do texto */
+}
+
+.report-list-text.ant-typography {
+  font-size: 1.05em;
+  color: #374151; /* Cinza escuro para o texto da lista */
+  line-height: 1.6;
+}
+.report-cta-text-minimal {
+  font-size: 1.05em;
+  color: #4b5563;
+  margin-top: 20px !important;
+  font-style: italic;
+}
+
+
+/* --- Seção Público Alvo --- */
+.audience-section-minimal {
+  text-align: center; /* Centralizar o título e a descrição */
+}
+
+.audience-description.description-minimal {
+  margin-bottom: 30px !important;
+}
+
+.audience-tags-minimal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px; /* Espaçamento entre as tags */
+}
+
+.audience-tag-minimal.ant-tag {
+  font-size: 0.95em;
+  padding: 8px 18px; /* Tags um pouco maiores */
+  border-radius: 20px; /* Tags bem arredondadas (pill shape) */
+  background-color: #eef2ff; /* Fundo muito claro, cor secundária suave */
+  color: #3730a3; /* Cor de texto que contrasta bem com o fundo da tag */
+  border: 1px solid #c7d2fe; /* Borda sutil */
+  cursor: default;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.audience-tag-minimal.ant-tag:hover {
+  background-color: #21436e;
+  color: #ffffff;
+  border-color: #21436e;
+}
+
+/* --- Responsividade --- */
+@media (max-width: 991px) { /* Tablets e abaixo */
+  .content-wrapper-minimal {
+    padding: 40px 25px;
+  }
+  .main-title-minimal.ant-typography {
+    font-size: 2.4em;
+  }
+  .subtitle-minimal.ant-typography {
+    font-size: 1.15em;
+  }
+  .section-title-minimal.ant-typography {
+    font-size: 1.8em;
+    margin-bottom: 30px !important;
+  }
+  .report-image-minimal {
+    margin-bottom: 30px;
+  }
+  .section-title-minimal.left-align-title {
+    text-align: center; /* Centralizar títulos de seção em mobile se ficarem estranhos à esquerda */
+  }
+  .report-section-minimal .description-minimal {
+    text-align: center;
+  }
+  .report-section-minimal .ant-list {
+    text-align: left; /* Manter texto da lista alinhado à esquerda */
+  }
+
+}
+
+@media (max-width: 767px) { /* Mobile */
+  .sobre-page-minimal-content {
+    margin-left: 0; /* Ajustar se a sidebar for oculta em mobile */
+  }
+  .content-wrapper-minimal {
+    padding: 30px 15px;
+  }
+  .main-title-minimal.ant-typography {
+    font-size: 2em;
+  }
+  .subtitle-minimal.ant-typography {
+    font-size: 1.05em;
+  }
+  .description-minimal.ant-typography {
+    font-size: 1em;
+  }
+  .section-title-minimal.ant-typography {
+    font-size: 1.6em;
+  }
+  .feature-item-minimal {
+    padding: 15px;
+  }
+  .feature-icon-minimal .anticon {
+    font-size: 2.4em;
+  }
+  .feature-title-minimal.ant-typography {
+    font-size: 1.2em;
+  }
+}

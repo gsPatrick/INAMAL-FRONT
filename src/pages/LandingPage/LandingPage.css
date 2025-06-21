@@ -1,0 +1,152 @@
+/* src/pages/LandingPage/LandingPage.css */
+
+/*
+  A classe .landing-page-content agora se refere ao container principal
+  definido em App.jsx (que é <Content className="main-content">).
+  Os estilos que eram para o .landing-page-content anteriormente
+  (como margin-left) agora devem ser tratados pelo .main-content em App.css.
+*/
+
+/* Se você precisar de estilos específicos para o container da LandingPage,
+   que sejam diferentes do .main-content global, você pode usar um wrapper
+   adicional dentro de LandingPage.jsx ou direcionar o .main-content
+   quando ele é filho de um elemento específico da rota da landing page
+   (mais complexo e geralmente não necessário).
+
+   Por enquanto, vamos assumir que os estilos globais de .main-content
+   em App.css são suficientes para o espaçamento.
+*/
+
+/* Estilos específicos para as seções da LandingPage podem continuar aqui,
+   mas a maioria já está em seus próprios arquivos CSS (HeroSection.css, etc.) */
+
+/* Exemplo: se você quiser um fundo diferente APENAS para a LandingPage */
+/*
+.main-content {  // Se você tiver um ID ou classe específica para a rota da landing page no body ou #root
+  background-color: #fdfdfd; // Um fundo ligeiramente diferente para a landing page
+}
+*/
+
+/* --- Estilos do Hero Section que estavam em LandingPage.css --- */
+/* Estes estilos são mais apropriados para HeroSection.css,
+   mas mantidos aqui se você os tinha centralizados.
+   Idealmente, mova-os para HeroSection.css para melhor organização.
+*/
+
+/* Se você já moveu estes para HeroSection.css, pode remover daqui. */
+.hero-section {
+  background-color: #ffffff; /* Fundo branco para a seção hero, para destacar */
+  /* padding: 80px 40px;  -> Gerenciado por HeroSection.css */
+  text-align: center; /* Centraliza o conteúdo textual */
+  border-bottom: 1px solid #e8e8e8; /* Linha sutil de separação */
+  /* min-height: 50vh; -> Gerenciado por HeroSection.css */
+  display: flex; /* Para centralizar verticalmente */
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-content-wrapper { /* Se ainda for usado DENTRO de HeroSection.jsx */
+  max-width: 800px;
+}
+
+.hero-title.ant-typography {
+  /* font-size: 42px; -> Gerenciado por HeroSection.css */
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 24px;
+  line-height: 1.3;
+}
+
+.hero-subtitle.ant-typography {
+  /* font-size: 20px; -> Gerenciado por HeroSection.css */
+  color: #596275;
+  line-height: 1.7;
+  margin-bottom: 32px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-cta-button.ant-btn {
+  /* Estilos do botão CTA -> Idealmente em HeroSection.css */
+  background-color: #21436e;
+  border-color: #21436e;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 12px 30px;
+  height: auto;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+}
+
+.hero-cta-button.ant-btn:hover {
+  background-color: #1a3557;
+  border-color: #1a3557;
+  transform: translateY(-2px);
+}
+
+.hero-cta-button.ant-btn .anticon {
+  margin-left: 8px;
+}
+
+/* Estilos gerais para títulos de seção (se não forem gerenciados por cada seção) */
+.section-title.ant-typography { /* Esta classe pode ser usada por várias seções */
+  font-size: 32px;
+  font-weight: 600;
+  color: #21436e;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+
+/* Ajustes para telas menores */
+@media (max-width: 768px) {
+  /* A regra de margin-left: 0; para .landing-page-content
+     foi movida para .main-content em App.css
+     ou é tratada pela ausência da margem. */
+
+  .hero-section {
+    /* padding: 60px 20px; -> Gerenciado por HeroSection.css */
+    /* min-height: auto;  -> Gerenciado por HeroSection.css */
+  }
+
+  .hero-title.ant-typography {
+    /* font-size: 32px; -> Gerenciado por HeroSection.css */
+  }
+
+  .hero-subtitle.ant-typography {
+    /* font-size: 18px; -> Gerenciado por HeroSection.css */
+  }
+
+  .section-title.ant-typography {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-title.ant-typography {
+    /* font-size: 28px; -> Gerenciado por HeroSection.css */
+  }
+
+  .hero-subtitle.ant-typography {
+    /* font-size: 16px; -> Gerenciado por HeroSection.css */
+  }
+
+  .hero-cta-button.ant-btn {
+    font-size: 16px;
+    padding: 10px 25px;
+  }
+
+  .section-title.ant-typography {
+    font-size: 24px;
+  }
+}
+
+/* O principal ajuste foi remover o margin-left: 280px;
+   que agora é desnecessário devido ao header horizontal.
+   Os outros estilos eram principalmente para a HeroSection
+   e idealmente deveriam estar em HeroSection.css.
+   Mantive-os comentados ou aqui para referência, caso
+   você os tivesse centralizado neste arquivo.
+*/

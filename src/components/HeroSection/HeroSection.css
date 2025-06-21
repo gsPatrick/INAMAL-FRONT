@@ -1,0 +1,276 @@
+/* src/components/HeroSection/HeroSection.css */
+.hero-section {
+  min-height: 90vh;
+  padding: 60px 40px;
+  background: linear-gradient(135deg, #f4f7fc 0%, #e8f0f9 100%); /* Gradiente azul ainda mais suave */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-content-row {
+  width: 100%;
+  max-width: 1200px;
+  z-index: 2;
+}
+
+.hero-text-col {
+  padding-right: 40px; /* Mais espaço */
+}
+
+.hero-title {
+  font-size: 3rem !important; /* Um pouco maior */
+  font-weight: 700 !important;
+  color: #21436e !important; /* Cor primária */
+  line-height: 1.25 !important;
+  margin-bottom: 24px !important;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem !important;
+  color: #4a658a !important; /* Tom de azul acinzentado */
+  line-height: 1.65 !important;
+  margin-bottom: 35px !important;
+  max-width: 580px;
+}
+
+.hero-cta-buttons .ant-btn {
+  margin-right: 18px;
+  margin-bottom: 10px;
+}
+
+.hero-cta-primary.ant-btn-primary {
+  background-color: #21436e !important;
+  border-color: #21436e !important;
+  padding: 12px 32px !important; /* Padding ligeiramente maior */
+  height: auto !important;
+  font-size: 17px !important; /* Fonte ligeiramente maior */
+  font-weight: 600 !important;
+  box-shadow: 0 5px 12px rgba(33, 67, 110, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hero-cta-primary.ant-btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 18px rgba(33, 67, 110, 0.35);
+}
+
+.hero-cta-secondary.ant-btn-default {
+  color: #21436e !important;
+  border: 2px solid #21436e !important; /* Borda mais pronunciada */
+  padding: 10px 30px !important; /* Ajuste para alinhar com a altura do primário */
+  height: auto !important;
+  font-size: 17px !important;
+  font-weight: 600 !important;
+  background-color: transparent !important;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.hero-cta-secondary.ant-btn-default:hover {
+  background-color: rgba(33, 67, 110, 0.05) !important;
+  transform: translateY(-2px);
+}
+
+/* Nova Área Gráfica Interativa */
+.hero-graphic-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px; /* Garante espaço para o gráfico */
+}
+
+.interactive-graphic-container {
+  position: relative;
+  width: 300px; /* Ajuste conforme necessário */
+  height: 300px; /* Ajuste conforme necessário */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.graphic-core {
+  width: 120px; /* Tamanho do núcleo */
+  height: 120px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 30px rgba(33, 67, 110, 0.1), 0 0 0 10px rgba(255,255,255,0.3); /* Sombra e anel branco */
+  position: relative;
+  z-index: 10;
+}
+
+.graphic-core .core-icon {
+  font-size: 50px;
+  color: #21436e; /* Cor primária */
+}
+
+.pulse-ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 2px solid rgba(33, 67, 110, 0.3); /* Cor primária com opacidade */
+  opacity: 0;
+  animation: pulseAnimation 2.5s infinite cubic-bezier(0.65,0.05,0.36,1);
+}
+
+.pulse-ring.ring1 { width: 140px; height: 140px; animation-delay: 0s; }
+.pulse-ring.ring2 { width: 180px; height: 180px; animation-delay: 0.5s; }
+.pulse-ring.ring3 { width: 220px; height: 220px; animation-delay: 1s; }
+
+@keyframes pulseAnimation {
+  0% { transform: translate(-50%, -50%) scale(0.7); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0; }
+}
+
+.graphic-node {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(33, 67, 110, 0.15);
+  z-index: 5;
+  animation: floatNode 5s infinite alternate ease-in-out;
+}
+
+.graphic-node .anticon {
+  font-size: 28px;
+  color: #21436e; /* Cor primária */
+}
+
+/* Posicionamento dos nós - ajuste para melhor visual */
+.graphic-node.node1 { top: 0px; left: 30px; animation-delay: 0.2s; }
+.graphic-node.node2 { top: 100px; right: -20px; animation-delay: 0.8s; }
+.graphic-node.node3 { bottom: 0px; left: 60px; animation-delay: 0.5s; }
+
+@keyframes floatNode {
+  0% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-10px) scale(1.05); }
+  100% { transform: translateY(0px) scale(1); }
+}
+
+.connection-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none; /* Para não interferir com cliques */
+}
+
+.connection-lines line {
+  stroke-dasharray: 200; /* Comprimento estimado da linha */
+  stroke-dashoffset: 200;
+  animation: drawLine 2s ease-out forwards;
+}
+.connection-lines .line-anim-1 { animation-delay: 1.2s; }
+.connection-lines .line-anim-2 { animation-delay: 1.5s; }
+.connection-lines .line-anim-3 { animation-delay: 1.8s; }
+
+@keyframes drawLine {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+
+/* Elementos decorativos de fundo (blur shapes) */
+.decorative-blur-shape {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(33, 67, 110, 0.1) 0%, rgba(33, 67, 110, 0) 70%);
+  z-index: 0; /* Abaixo de tudo, exceto o fundo principal */
+  filter: blur(20px); /* Desfoque para efeito suave */
+  opacity: 0.7;
+  animation: gentleDriftLarge 30s infinite alternate ease-in-out;
+}
+
+.shape-a {
+  width: 400px;
+  height: 400px;
+  top: 5%;
+  left: -10%;
+  animation-duration: 35s;
+}
+
+.shape-b {
+  width: 350px;
+  height: 350px;
+  bottom: -5%;
+  right: -8%;
+  animation-duration: 40s;
+  animation-delay: -7s;
+}
+
+@keyframes gentleDriftLarge {
+  from { transform: translate(-40px, 20px) scale(0.9) rotate(-10deg); }
+  to { transform: translate(40px, -30px) scale(1.1) rotate(10deg); }
+}
+
+
+/* Animações de entrada (mantidas) */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; }
+.animate-fade-in-right { animation: fadeInRight 0.8s ease-out forwards; opacity: 0; }
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+.delay-3 { animation-delay: 0.6s; }
+.delay-4 { animation-delay: 0.8s; } /* Aplicado ao container do gráfico */
+
+
+/* Responsividade */
+@media (max-width: 991px) { /* lg breakpoint */
+  .hero-text-col {
+    padding-right: 0;
+    text-align: center;
+    margin-bottom: 50px; /* Espaço quando o gráfico vai para baixo */
+  }
+  .hero-subtitle {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero-graphic-col {
+    min-height: 350px; /* Reduz um pouco a altura mínima */
+  }
+  .interactive-graphic-container {
+    width: 260px;
+    height: 260px;
+  }
+  .graphic-core { width: 100px; height: 100px; }
+  .graphic-core .core-icon { font-size: 40px; }
+  .pulse-ring.ring1 { width: 120px; height: 120px; }
+  .pulse-ring.ring2 { width: 150px; height: 150px; }
+  .pulse-ring.ring3 { width: 180px; height: 180px; }
+  .graphic-node { width: 50px; height: 50px; }
+  .graphic-node .anticon { font-size: 24px; }
+}
+
+@media (max-width: 767px) { /* md breakpoint para baixo */
+  .hero-section { padding: 40px 20px; min-height: unset; } /* Altura automática em mobile */
+  .hero-title { font-size: 2.3rem !important; }
+  .hero-subtitle { font-size: 1.05rem !important; }
+  .hero-cta-buttons { display: flex; flex-direction: column; align-items: center; }
+  .hero-cta-buttons .ant-btn { width: 100%; max-width: 320px; margin-right: 0; margin-bottom: 18px; }
+  .hero-cta-buttons .ant-btn:last-child { margin-bottom: 0; }
+
+  .shape-a { width: 300px; height: 300px; opacity: 0.5; }
+  .shape-b { width: 250px; height: 250px; opacity: 0.5; }
+}

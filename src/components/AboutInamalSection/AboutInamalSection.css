@@ -1,0 +1,358 @@
+/* src/components/AboutInamalSection/AboutInamalSection.css */
+.about-inamal-section-v2 {
+  padding: 90px 40px; /* Aumentar padding */
+  background-color: #f8faff;
+  overflow: hidden;
+  position: relative;
+}
+
+.about-inamal-section-v2 .container {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.about-inamal-section-v2 .section-header {
+  text-align: center;
+  margin-bottom: 70px; /* Mais espaço */
+}
+
+.about-inamal-section-v2 .section-title {
+  font-size: 2.8rem !important; /* Aumentar título */
+  font-weight: 700 !important;
+  color: #2c3e50 !important;
+  margin-bottom: 15px !important;
+  display: inline-block; /* Para animação */
+}
+
+.about-inamal-section-v2 .section-title .highlight-text {
+  color: #21436e;
+  /* Efeito de underline animado no hover do título (opcional) */
+  /* position: relative;
+  display: inline-block; */
+}
+/*
+.about-inamal-section-v2 .section-title .highlight-text::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 3px;
+  display: block;
+  margin-top: 5px;
+  right: 0;
+  background: #21436e;
+  transition: width .3s ease;
+  -webkit-transition: width .3s ease;
+}
+.about-inamal-section-v2 .section-title:hover .highlight-text::after {
+  width: 100%;
+  left: 0;
+  background: #21436e;
+}
+*/
+
+.about-inamal-section-v2 .section-subtitle {
+  font-size: 1.2rem !important; /* Aumentar subtítulo */
+  color: #5a6e8b !important;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Coluna do Gráfico Conceitual */
+.about-graphic-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inamal-concept-graphic {
+  position: relative;
+  width: 240px; /* Aumentar gráfico */
+  height: 240px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.graphic-bg-shape {
+  position: absolute;
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  opacity: 0.08; /* Mais sutil */
+  animation: morphShape 20s infinite alternate ease-in-out; /* Mais lento */
+}
+.graphic-bg-shape.shape-1 {
+  width: 100%;
+  height: 100%;
+  background-color: #21436e;
+  transform: rotate(15deg);
+  animation-delay: -5s; /* Diferenciar delays */
+}
+.graphic-bg-shape.shape-2 {
+  width: 85%; /* Ligeiramente maior */
+  height: 85%;
+  background-color: #7aa0c9;
+  transform: rotate(-30deg); /* Diferenciar rotação */
+  animation-delay: -2s;
+}
+
+@keyframes morphShape {
+  0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; transform: rotate(0deg) scale(0.95); opacity: 0.06; }
+  50% { border-radius: 50% 50% 30% 70% / 40% 20% 80% 60%; transform: rotate(12deg) scale(1.05); opacity: 0.1; }
+  100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; transform: rotate(0deg) scale(0.95); opacity: 0.06; }
+}
+
+.main-graphic-icon {
+  font-size: 85px; /* Aumentar */
+  color: #21436e;
+  z-index: 3;
+  animation: iconPulse 2.5s infinite ease-in-out; /* Mais rápido */
+}
+@keyframes iconPulse {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.1) rotate(5deg); } /* Adicionar rotação sutil */
+}
+
+.sub-icon {
+  position: absolute;
+  font-size: 32px; /* Aumentar */
+  background-color: #ffffff;
+  padding: 10px; /* Aumentar */
+  border-radius: 50%;
+  box-shadow: 0 6px 12px rgba(33, 67, 110, 0.2); /* Sombra mais pronunciada */
+  z-index: 4;
+  color: #21436e;
+  animation: subIconFloat 3.5s infinite ease-in-out alternate;
+}
+.sub-icon.icon-tool { top: 5%; left: 8%; animation-delay: 0.3s; }
+.sub-icon.icon-report { bottom: 10%; right: 2%; animation-delay: 0.8s; }
+
+@keyframes subIconFloat {
+  from { transform: translateY(0px) rotate(-3deg); }
+  to { transform: translateY(-10px) rotate(3deg); }
+}
+
+/* Coluna de Texto */
+.about-text-col .intro-paragraph {
+  font-size: 1.15rem; /* Aumentar */
+  line-height: 1.8; /* Aumentar */
+  margin-bottom: 25px;
+  color: #34495e;
+}
+.about-text-col p:not(.intro-paragraph) { /* Target p que não é intro */
+  font-size: 1.05rem; /* Aumentar */
+  line-height: 1.75;
+  color: #4a6e8b;
+  margin-bottom: 20px;
+}
+
+.target-audience-box {
+  background-color: #ffffff;
+  padding: 25px; /* Aumentar */
+  border-radius: 10px; /* Mais arredondado */
+  border-left: 5px solid #21436e;
+  margin-top: 30px;
+  display: flex;
+  align-items: center; /* Centralizar verticalmente */
+  gap: 20px; /* Mais espaço */
+  box-shadow: 0 8px 20px rgba(33, 67, 110, 0.07); /* Sombra mais suave */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.target-audience-box:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(33, 67, 110, 0.1);
+}
+.target-audience-icon {
+  font-size: 32px; /* Aumentar */
+  color: #21436e;
+}
+
+/* Cards de Benefícios */
+.benefit-card.ant-card {
+  border-radius: 15px; /* Mais arredondado */
+  box-shadow: 0 10px 30px rgba(33, 67, 110, 0.08);
+  text-align: center;
+  padding: 25px 20px; /* Aumentar padding */
+  height: 100%;
+  border: none; /* Remover borda padrão */
+  background-color: #ffffff; /* Fundo branco padrão */
+  color: #2c3e50; /* Cor de texto padrão */
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), 
+              box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+              background-color 0.4s ease,
+              color 0.4s ease;
+}
+.benefit-card.ant-card:hover {
+  transform: translateY(-12px) scale(1.03); /* Flutuação mais pronunciada */
+  box-shadow: 0 15px 35px rgba(33, 67, 110, 0.15);
+  background-color: #21436e !important; /* FUNDO NO HOVER */
+  color: #ffffff !important; /* TEXTO BRANCO NO HOVER */
+}
+.benefit-card .ant-card-body {
+  padding: 0 !important;
+}
+
+.benefit-icon-wrapper {
+  width: 75px; /* Aumentar */
+  height: 75px;
+  margin: 0 auto 25px auto;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #e8f0f9 0%, #ffffff 100%); /* Ajuste no gradiente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 0 10px rgba(232, 240, 249, 0.7); /* Sombra interna mais clara */
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+}
+.benefit-card:hover .benefit-icon-wrapper {
+  background: #ffffff; /* Fundo do wrapper do ícone branco no hover do card */
+  box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.benefit-icon {
+  font-size: 36px; /* Aumentar */
+  color: #21436e;
+  transition: color 0.4s ease;
+}
+.benefit-card:hover .benefit-icon {
+  color: #21436e; /* Manter cor do ícone, ou trocar se preferir (ex: #1890ff) */
+}
+
+.benefit-title {
+  font-size: 1.4rem !important; /* Aumentar */
+  color: #21436e !important;
+  margin-bottom: 12px !important;
+  font-weight: 600 !important;
+  transition: color 0.4s ease;
+}
+.benefit-card:hover .benefit-title {
+  color: #ffffff !important; /* Cor do título branca no hover */
+}
+
+.benefit-description {
+  font-size: 1rem; /* Aumentar */
+  color: #5a6e8b;
+  line-height: 1.65;
+  min-height: 60px;
+  transition: color 0.4s ease;
+}
+.benefit-card:hover .benefit-description {
+  color: #e0e9f5 !important; /* Cor da descrição mais clara no hover */
+}
+
+.automated-info {
+    text-align: center;
+    margin-top: 40px; /* Mais espaço */
+    margin-bottom: 10px; /* Adicionar espaço abaixo */
+    font-size: 1.1rem;
+    color: #34495e;
+    font-weight: 500;
+}
+
+.about-v2-cta-button.ant-btn-primary {
+  background-color: #21436e !important;
+  border-color: #21436e !important;
+  padding: 14px 36px !important; /* Aumentar */
+  height: auto !important;
+  font-size: 18px !important; /* Aumentar */
+  font-weight: 600 !important;
+  box-shadow: 0 6px 15px rgba(33, 67, 110, 0.3); /* Aumentar sombra */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+.about-v2-cta-button.ant-btn-primary:hover {
+  transform: translateY(-4px) scale(1.02); /* Mais efeito no hover */
+  box-shadow: 0 8px 20px rgba(33, 67, 110, 0.4);
+  background-color: #1b3659 !important; /* Levemente mais escuro no hover */
+}
+
+/* Elementos decorativos de fundo */
+.decorative-bg-element {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.04; /* Ainda mais sutil */
+  background-color: #21436e;
+  z-index: 1;
+  animation: bgElementFloat 50s infinite alternate ease-in-out; /* Mais lento */
+}
+.decorative-bg-element.element-1 { width: 350px; height: 350px; top: 5%; left: -180px; animation-delay: -8s; }
+.decorative-bg-element.element-2 { width: 450px; height: 450px; bottom: -5%; right: -220px; animation-delay: -2s; }
+.decorative-bg-element.element-3 { /* Elemento extra */
+  width: 250px; height: 250px; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  opacity: 0.03; animation-duration: 60s; animation-delay: -15s;
+}
+
+@keyframes bgElementFloat {
+  from { transform: translateY(0px) translateX(0px) rotate(0deg) scale(0.9); }
+  to { transform: translateY(-40px) translateX(30px) rotate(25deg) scale(1.1); }
+}
+
+/* Novas Animações de Entrada */
+@keyframes popIn {
+  0% { opacity: 0; transform: scale(0.5); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.animate-pop-in { animation: popIn 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards; opacity: 0; }
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-100px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.animate-slide-in-left { animation: slideInLeft 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; opacity: 0; }
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(100px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.animate-slide-in-right { animation: slideInRight 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; opacity: 0; }
+
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+.animate-zoom-in { animation: zoomIn 0.7s ease-out forwards; opacity: 0; }
+
+/* Animações de entrada (fade-in-up reutilizada com nome original) */
+.animate-fade-in-up { opacity: 0; transform: translateY(40px); animation: fadeInUp 0.8s ease-out forwards; }
+@keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+
+
+/* Delays (revisados no JSX para melhor efeito cascata) */
+.delay-0 { animation-delay: 0.1s; }
+.delay-1 { animation-delay: 0.3s; }
+.delay-2 { animation-delay: 0.5s; } /* Gráfico */
+.delay-3 { animation-delay: 0.7s; } /* Texto principal */
+.delay-4 { animation-delay: 0.9s; } /* Card 1 */
+.delay-5 { animation-delay: 1.1s; } /* Card 2 */
+.delay-6 { animation-delay: 1.3s; } /* Card 3 */
+/* Os delays para automated-info e CTA no JSX foram ajustados para `benefits.length + 4` e `benefits.length + 5` */
+
+
+/* Responsividade (mantida, mas pode precisar de ajustes finos com os novos tamanhos) */
+@media (max-width: 991px) { /* md */
+  .about-graphic-col {
+    order: -1;
+    margin-bottom: 50px; /* Aumentar espaço */
+  }
+  .inamal-concept-graphic {
+    width: 200px; /* Ajustar */
+    height: 200px;
+  }
+  .main-graphic-icon { font-size: 70px; }
+  .sub-icon { font-size: 28px; padding: 8px; }
+}
+
+@media (max-width: 767px) { /* sm */
+  .about-inamal-section-v2 {
+    padding: 70px 20px; /* Ajustar */
+  }
+  .section-title { font-size: 2.3rem !important; }
+  .section-subtitle { font-size: 1.1rem !important; }
+
+  .benefit-card.ant-card {
+    padding: 20px 15px;
+  }
+  .benefit-title { font-size: 1.25rem !important; }
+  .benefit-description { font-size: 0.95rem; min-height: auto; }
+
+  .decorative-bg-element.element-3 { display: none; } /* Ocultar elemento central em telas pequenas */
+}

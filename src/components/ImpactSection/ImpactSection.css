@@ -1,0 +1,318 @@
+/* src/components/ImpactSection/ImpactSection.css */
+
+/* Estilos Base da Seção V3 (herdando de V2 se não sobrescritos) */
+.impact-section-v3 {
+  padding: 120px 40px; /* Mais padding vertical */
+  background-color: #f4f7fc; /* Fundo azul muito, muito claro */
+  position: relative;
+  overflow: hidden;
+}
+
+.impact-section-v3 .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* Imagem V3 (herdando de V2, ajustes sutis se necessário) */
+.impact-image-col-v3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.impact-image-wrapper-v3 {
+  position: relative;
+  width: 100%;
+  max-width: 650px;
+  border-radius: 20px; /* Bordas um pouco mais arredondadas */
+  overflow: hidden;
+  border: 1px solid #dde4ee; /* Borda um pouco mais visível */
+  box-shadow: 0 20px 55px rgba(33, 67, 110, 0.12); /* Sombra mais pronunciada */
+}
+
+.impact-image-v3 {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/10; /* Ajuste a proporção conforme necessário */
+  object-fit: cover;
+  border-radius: 19px;
+  transition: transform 0.7s cubic-bezier(0.165, 0.84, 0.44, 1), filter 0.5s ease;
+}
+
+.impact-image-wrapper-v3:hover .impact-image-v3 {
+  transform: scale(1.04);
+  filter: brightness(1.05); /* Leve brilho na imagem no hover */
+}
+
+/* Conteúdo V3 */
+.impact-content-col-v3 {
+  padding-left: 50px; /* Mais espaço */
+}
+
+.impact-title-v3 {
+  font-size: 2.9rem !important;
+  font-weight: 700 !important;
+  color: #1e2a3b !important; /* Azul bem escuro, quase preto */
+  margin-bottom: 22px !important;
+  line-height: 1.25;
+}
+
+.impact-title-v3 .highlight-text-v3 {
+  color: #21436e; /* Cor primária */
+  position: relative;
+  display: inline-block; /* Necessário para o pseudo-elemento */
+}
+
+/* Animação para o sublinhado do highlight */
+.impact-title-v3 .highlight-text-v3.animate-highlight-text::after {
+  content: '';
+  position: absolute;
+  width: 0%; /* Começa com largura 0 */
+  height: 4px;
+  background-color: #4a90e2; /* Um azul mais vibrante para o sublinhado */
+  bottom: -6px; /* Posição abaixo do texto */
+  left: 0;
+  border-radius: 2px;
+  transition: width 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) 0.5s; /* Delay para começar após o texto aparecer */
+}
+.impact-section-v3.loaded .impact-title-v3 .highlight-text-v3.animate-highlight-text::after, /* Se usar classe 'loaded' via JS */
+.impact-title-v3 .highlight-text-v3.animate-highlight-text:hover::after { /* Alternativa no hover */
+  /* A animação do after agora deve ser acionada pela aparição da seção,
+     não apenas no hover, se a classe .animate-highlight-text for usada para isso.
+     Para acionar com a visibilidade, você precisaria de Intersection Observer.
+     Por simplicidade, vamos deixar o hover como um fallback ou principal trigger se não usar JS.
+     Se a animação de entrada da coluna já tornou o texto visível, a transição de width pode ocorrer.
+  */
+}
+/* Para acionar com a entrada da seção (requer que o delay da animação principal já tenha passado) */
+.impact-content-col-v3.animate-fade-in-right-v3 .highlight-text-v3.animate-highlight-text::after {
+    width: 100%; /* Anima a largura quando a coluna de conteúdo entra */
+}
+
+
+.impact-subtitle-v3 {
+  font-size: 1.1rem !important;
+  color: #526988 !important; /* Cinza azulado mais escuro */
+  line-height: 1.75;
+  margin-bottom: 40px !important;
+}
+
+/* Lista de Features / Cards V3 */
+.impact-features-list-v3 {
+  margin-top: 30px;
+}
+
+.impact-feature-item-v3 {
+  display: flex;
+  align-items: center;
+  margin-bottom: 22px;
+  background-color: #ffffff;
+  padding: 22px 28px;
+  border-radius: 14px;
+  border: 1px solid #e1e8f0;
+  box-shadow: 0 7px 20px rgba(50, 71, 92, 0.07);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, background-color 0.35s ease, border-color 0.35s ease;
+  cursor: default; /* Indica que não é clicável por si só, mas pode ter hover */
+}
+
+.impact-feature-item-v3:hover {
+  transform: translateY(-8px) scale(1.01); /* Elevação e leve escala */
+  box-shadow: 0 12px 30px rgba(33, 67, 110, 0.1);
+  background-color: #21436e; /* Fundo primário no hover */
+  border-color: #21436e;
+}
+
+.feature-item-icon-wrapper-v3 {
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  background-color: #eaf2fa;
+  color: #21436e;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  transition: background-color 0.35s ease, color 0.35s ease, transform 0.35s ease;
+}
+.impact-feature-item-v3:hover .feature-item-icon-wrapper-v3 {
+  background-color: #ffffff; /* Wrapper do ícone fica branco */
+  color: #21436e; /* Ícone mantém a cor primária (ou pode mudar para #fff se o ícone for svg e aceitar fill) */
+  transform: rotate(10deg) scale(1.1); /* Animação sutil no ícone */
+}
+
+.feature-item-icon-v3 {
+  font-size: 24px;
+  transition: color 0.35s ease; /* Se a cor do ícone mudar diretamente */
+}
+/* Se o ícone precisar mudar de cor com o wrapper: */
+.impact-feature-item-v3:hover .feature-item-icon-v3 {
+   color: #21436e; /* Mantém a cor primária, pois o fundo do wrapper é branco */
+}
+
+
+.feature-item-text-v3 {}
+
+.feature-item-title-v3 {
+  font-size: 1.2rem !important;
+  color: #21436e !important;
+  margin-bottom: 6px !important;
+  font-weight: 600 !important;
+  transition: color 0.35s ease;
+}
+.impact-feature-item-v3:hover .feature-item-title-v3 {
+  color: #ffffff !important; /* Título branco no hover */
+}
+
+.feature-item-description-v3 {
+  font-size: 0.9rem;
+  color: #5a6e8b;
+  line-height: 1.65;
+  margin-bottom: 0 !important;
+  transition: color 0.35s ease;
+}
+.impact-feature-item-v3:hover .feature-item-description-v3 {
+  color: #e0e9f5 !important; /* Descrição azul claro/quase branco no hover */
+}
+
+/* Botão CTA V3 Aprimorado */
+.impact-cta-button-v3.ant-btn-primary {
+  margin-top: 30px;
+  background: linear-gradient(135deg, #21436E 0%, #3A6294 100%) !important; /* Gradiente sutil */
+  border: none !important;
+  color: #ffffff !important;
+  padding: 15px 38px !important; /* Padding maior */
+  height: auto !important;
+  font-size: 1.05rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(33, 67, 110, 0.25), 0 2px 5px rgba(0,0,0,0.1);
+  transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative; /* Para o ::before e .btn-glow-v3 */
+  overflow: hidden; /* Para o brilho não vazar */
+  z-index: 1;
+}
+.impact-cta-button-v3.ant-btn-primary .anticon {
+  margin-right: 10px;
+  font-size: 1.2em; /* Ícone maior */
+  transition: transform 0.3s ease;
+}
+.impact-cta-button-v3.ant-btn-primary > span:not(.btn-glow-v3) { /* Target o texto e ícone */
+    position: relative;
+    z-index: 2;
+}
+
+.impact-cta-button-v3.ant-btn-primary:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 28px rgba(33, 67, 110, 0.3), 0 5px 10px rgba(0,0,0,0.15);
+}
+.impact-cta-button-v3.ant-btn-primary:hover .anticon {
+  transform: translateX(3px); /* Ícone se move um pouco para a direita */
+}
+
+/* Efeito de brilho no botão CTA */
+.btn-glow-v3 {
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0) 65%);
+  transform: rotate(0deg);
+  opacity: 0;
+  transition: opacity 0.5s ease-out, transform 0.7s ease-out;
+  pointer-events: none; /* Não interfere com o clique */
+  z-index: 1;
+}
+.impact-cta-button-v3.ant-btn-primary:hover .btn-glow-v3 {
+  opacity: 1;
+  transform: rotate(45deg);
+}
+
+/* Elementos decorativos de fundo V3 (mantidos de V2 ou ajustados) */
+.decorative-bg-blob-v3 {
+  position: absolute; border-radius: 50%; opacity: 0.04; z-index: 1;
+  filter: blur(60px); animation: bgBlobFloatV3 55s infinite alternate ease-in-out;
+}
+.decorative-bg-blob-v3.blob-1-v3 {
+  width: 550px; height: 550px; background-color: #a8c0d8; /* Azul claro */
+  top: 0%; right: -220px; animation-delay: -10s;
+}
+.decorative-bg-blob-v3.blob-2-v3 {
+  width: 500px; height: 500px; background-color: #cad7e6; /* Azul ainda mais claro */
+  bottom: -10%; left: -200px; animation-duration: 65s;
+}
+@keyframes bgBlobFloatV3 {
+  from { transform: translate(0px, 0px) scale(0.85) rotate(-5deg); }
+  to { transform: translate(-35px, 25px) scale(1.15) rotate(10deg); }
+}
+
+/* Animações de Entrada V3 */
+/* Keyframes (fadeInUpImpactV3, etc.) definidos na V2 podem ser reutilizados se os nomes de classe não mudarem.
+   No JSX V3, usamos style para aplicar a animação e delay, então o nome da animação precisa corresponder.
+*/
+@keyframes fadeInUpImpactV3 {
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideInLeftImpactV3 { /* Renomeado se necessário, ou manter o nome da V2 */
+  from { opacity: 0; transform: translateX(-100px); } /* Distância maior */
+  to { opacity: 1; transform: translateX(0); }
+}
+.animate-slide-in-left-v3 { animation: slideInLeftImpactV3 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; opacity: 0; }
+
+@keyframes fadeInRightImpactV3 { /* Renomeado se necessário, ou manter o nome da V2 */
+  from { opacity: 0; transform: translateX(100px); } /* Distância maior */
+  to { opacity: 1; transform: translateX(0); }
+}
+.animate-fade-in-right-v3 { animation: fadeInRightImpactV3 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; opacity: 0; }
+
+/* Delays são aplicados via style no JSX para melhor controle da cascata */
+
+
+/* Responsividade V3 (herda de V2 e ajusta) */
+@media (max-width: 991px) { /* md */
+  .impact-section-v3 .container { max-width: 960px; }
+  .impact-image-wrapper-v3 { max-width: 100%; /* Imagem ocupa mais da coluna */ aspect-ratio: 3/2; }
+  .impact-title-v3 { font-size: 2.5rem !important; }
+  .impact-content-col-v3 { padding-left: 30px; }
+}
+
+@media (max-width: 767px) { /* sm */
+  .impact-section-v3 { padding: 80px 20px; }
+  .impact-image-col-v3 {
+    order: -1;
+    margin-bottom: 40px;
+  }
+  .impact-image-wrapper-v3 { aspect-ratio: 4/3; } /* Ajusta proporção em mobile se necessário */
+  .impact-content-col-v3 {
+    padding-left: 0;
+    text-align: center;
+  }
+  .impact-subtitle-v3 {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .impact-title-v3 { font-size: 2.2rem !important; }
+  .impact-subtitle-v3 { font-size: 1.05rem !important; }
+
+  .impact-feature-item-v3 {
+    padding: 18px 20px;
+    /* Para centralizar texto se o ícone ficar acima:
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    */
+  }
+  /* Se o ícone for para cima do texto no card em mobile:
+  .feature-item-icon-wrapper-v3 {
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+  */
+  .impact-cta-button-v3.ant-btn-primary {
+    width: 100%;
+    max-width: 320px; /* Limita largura do botão em mobile */
+  }
+}

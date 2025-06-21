@@ -1,0 +1,275 @@
+/* src/components/Header/Header.css */
+
+/* Estilos para a versão V3 do Header */
+.app-header-horizontal-v3 {
+  background: #ffffff !important;
+  padding: 0 30px !important; /* Mais padding horizontal */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+  position: sticky !important;
+  top: 0;
+  z-index: 1000;
+  height: 120px; /* Altura inicial do header para logo de 100px */
+  display: flex;
+  align-items: center;
+  width: 100%;
+  transition: height 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Transição para altura */
+}
+
+/* Header encolhido ao rolar */
+.app-header-horizontal-v3.scrolled {
+  height: 80px; /* Altura do header reduzida ao rolar */
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.logo-container-horizontal-v3 {
+  display: flex;
+  align-items: center;
+  height: 100%; /* Para alinhar a logo verticalmente */
+}
+
+.logo-container-horizontal-v3 a {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  text-decoration: none;
+}
+
+.logo-image-v3 {
+  height: 100px; /* Tamanho da logo aumentado */
+  width: 150px;
+  object-fit: contain;
+  transition: height 0.3s ease-in-out; /* Transição para altura */
+    border-radius: 0 !important; /* <<< ESSENCIAL: Remove o arredondamento padrão do Avatar */
+
+}
+
+.app-header-horizontal-v3.scrolled .logo-image-v3 {
+  height: 60px; /* Tamanho da logo reduzido ao rolar */
+}
+
+/* Menu Container V3 */
+.menu-container-horizontal-v3 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-grow: 1;
+  min-width: 0;
+  height: 100%; /* Para alinhar itens do menu com o centro do header alto */
+}
+
+/* Menu Horizontal (Desktop) V3 */
+.horizontal-menu.ant-menu {
+  border-bottom: none !important;
+  line-height: normal !important; /* Resetar line-height para usar align-items */
+  background: transparent !important;
+  display: flex;
+  align-items: center; /* Alinha os itens do menu verticalmente */
+  justify-content: flex-end;
+  margin-right: 20px; /* Espaço antes do botão CTA */
+  height: 100%;
+}
+
+.horizontal-menu .ant-menu-item {
+  font-size: 15px;
+  font-weight: 500;
+  color: #334155; /* Tom de cinza mais escuro */
+  margin: 0 8px !important; /* Mais espaçamento horizontal */
+  padding: 0 16px !important;
+  border-radius: 8px;
+  transition: color 0.25s ease, background-color 0.25s ease, transform 0.2s ease;
+  display: flex; /* Para alinhar ícone e texto */
+  align-items: center;
+  height: 44px; /* Altura fixa para os itens, para melhor alinhamento e hover */
+  line-height: 44px; /* Para centralizar texto se não houver ícone */
+}
+.horizontal-menu .ant-menu-item .anticon {
+  margin-right: 8px;
+  font-size: 1.1em;
+}
+
+.horizontal-menu .ant-menu-item:hover:not(.ant-menu-item-selected) {
+  color: #1e3a8a !important; /* Azul mais escuro no hover */
+  background-color: #eef2ff; /* Fundo azul muito claro no hover */
+  transform: translateY(-1px);
+}
+
+.horizontal-menu .ant-menu-item-selected {
+  color: #1e3a8a !important; /* Azul mais escuro */
+  background-color: #e0e7ff !important; /* Fundo azul claro para selecionado */
+  font-weight: 600;
+}
+.horizontal-menu .ant-menu-item::after,
+.horizontal-menu .ant-menu-submenu::after {
+  border-bottom: none !important;
+}
+
+
+/* Botão CTA no Desktop V3 */
+.menu-item-cta-desktop {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  padding: 0 24px !important;
+  height: 48px !important; /* Botão CTA um pouco maior */
+  border-radius: 8px !important;
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important; /* Gradiente azul vibrante */
+  color: #ffffff !important;
+  border: none !important;
+  box-shadow: 0 6px 12px rgba(37, 99, 235, 0.25), 0 1px 3px rgba(0,0,0,0.05);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.menu-item-cta-desktop .anticon {
+  margin-right: 8px;
+  font-size: 1.1em;
+}
+.menu-item-cta-desktop:hover {
+  background: linear-gradient(135deg, #1d4ed8 0%, #1e3a8a 100%) !important; /* Gradiente mais escuro no hover */
+  color: #ffffff !important;
+  transform: translateY(-3px) scale(1.02); /* Mais elevação */
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.3), 0 3px 6px rgba(0,0,0,0.08);
+}
+.menu-item-cta-desktop.active-cta {
+  background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%) !important;
+  box-shadow: 0 3px 7px rgba(29, 78, 216, 0.2), inset 0 1px 3px rgba(0,0,0,0.1);
+  transform: translateY(0px) scale(1); /* Resetar transform para ativo */
+}
+
+
+/* Botão do Drawer (Mobile) V3 */
+.menu-drawer-button-v3.ant-btn {
+  font-size: 26px;
+  color: #1e3a8a; /* Azul mais escuro */
+  padding: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.menu-drawer-button-v3.ant-btn:hover {
+  background-color: #eef2ff; /* Fundo azul muito claro */
+  color: #1d4ed8;
+}
+
+
+/* Drawer Menu V3 */
+.app-menu-drawer-v3 .ant-drawer-header {
+  border-bottom: 1px solid #e5e7eb; /* Borda mais sutil */
+  padding: 20px 24px;
+}
+.app-menu-drawer-v3 .ant-drawer-close {
+  padding: 14px;
+}
+.app-menu-drawer-v3 .ant-drawer-title a span { /* Texto "INAMAL" no drawer */
+    color: #1e3a8a;
+}
+
+.drawer-menu.ant-menu {
+  border-right: none !important;
+  padding-top: 10px;
+}
+
+.drawer-menu .ant-menu-item {
+  font-size: 16px;
+  padding: 15px 28px !important; /* Mais padding */
+  color: #374151;
+  border-radius: 0 !important;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+.drawer-menu .ant-menu-item .anticon {
+  margin-right: 14px;
+  font-size: 1.2em;
+}
+
+.drawer-menu .ant-menu-item:hover:not(.ant-menu-item-selected) {
+  color: #1e3a8a !important;
+  background-color: #f3f6ff !important; /* Azul bem clarinho */
+}
+
+.drawer-menu .ant-menu-item-selected {
+  background-color: #e0e7ff !important; /* Azul claro */
+  color: #1e3a8a !important; /* Azul mais escuro */
+  font-weight: 600;
+}
+.drawer-menu .ant-menu-item-selected::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: #1e3a8a; /* Azul mais escuro */
+}
+
+/* Estilo para o item CTA no Drawer V3 */
+.drawer-menu .menu-item-cta-drawer.ant-menu-item {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+  color: #ffffff !important;
+  margin: 16px 20px 20px 20px;
+  border-radius: 8px;
+  width: calc(100% - 40px);
+  font-weight: 600;
+  text-align: center;
+}
+.drawer-menu .menu-item-cta-drawer.ant-menu-item .anticon {
+  color: #ffffff !important;
+}
+.drawer-menu .menu-item-cta-drawer.ant-menu-item.ant-menu-item-selected,
+.drawer-menu .menu-item-cta-drawer.ant-menu-item:hover {
+  background: linear-gradient(135deg, #1d4ed8 0%, #1e3a8a 100%) !important;
+  color: #ffffff !important;
+}
+.drawer-menu .menu-item-cta-drawer.ant-menu-item-selected::before {
+    display: none;
+}
+
+
+/* Media Queries para Responsividade do Header V3 */
+@media (max-width: 991px) { /* Breakpoint md do AntD (lg-1) */
+  .app-header-horizontal-v3 {
+    padding: 0 20px !important; /* Menos padding em mobile */
+    /* Manter altura inicial maior mesmo em mobile, o scroll irá reduzir */
+  }
+  .app-header-horizontal-v3.scrolled {
+    height: 70px; /* Altura reduzida em mobile no scroll */
+  }
+  .app-header-horizontal-v3.scrolled .logo-image-v3 {
+    height: 50px; /* Logo reduzida em mobile no scroll */
+  }
+  .menu-container-horizontal-v3 .horizontal-menu,
+  .menu-container-horizontal-v3 .menu-item-cta-desktop {
+    display: none !important;
+  }
+  .menu-container-horizontal-v3 .menu-drawer-button-v3 {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 575px) { /* xs */
+  .app-header-horizontal-v3 {
+    height: 100px; /* Altura inicial do header em telas muito pequenas */
+    padding: 0 16px !important;
+  }
+  .logo-image-v3 {
+    height: 80px; /* Logo um pouco menor em telas muito pequenas */
+  }
+  .app-header-horizontal-v3.scrolled {
+    height: 64px;
+  }
+  .app-header-horizontal-v3.scrolled .logo-image-v3 {
+    height: 48px;
+  }
+
+  .app-menu-drawer-v3 .ant-drawer-header {
+    padding: 16px 20px;
+  }
+  .app-menu-drawer-v3 .ant-drawer-title span {
+    font-size: 1rem;
+  }
+  .app-menu-drawer-v3 {
+    width: 280px !important; /* Drawer um pouco mais estreito se necessário */
+  }
+}

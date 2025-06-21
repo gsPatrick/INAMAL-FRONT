@@ -1,0 +1,296 @@
+/* src/components/PricingHighlightSection/PricingHighlightSection.css */
+.pricing-highlight-section.light-theme { /* Classe para o tema claro */
+  padding: 60px 40px;
+  background-color: #ffffff; /* FUNDO BRANCO */
+  /* Ou um cinza muito sutil: background-color: #f8f9fa; */
+  color: #2c3e50; /* Cor de texto padrão para tema claro (cinza escuro) */
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  border-top: 1px solid #e9ecef; /* Linha sutil de separação, opcional */
+  border-bottom: 1px solid #e9ecef; /* Linha sutil de separação, opcional */
+}
+
+.pricing-highlight-section.compact {
+  /* Mantém ajustes de compactação */
+}
+
+.pricing-highlight-section.light-theme .ph-container {
+  max-width: 750px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.pricing-highlight-section.light-theme .ph-icon-header {
+  font-size: 40px;
+  color: #21436e; /* Ícone na cor primária azul */
+  margin-bottom: 15px;
+}
+.pricing-highlight-section.light-theme .ph-icon-header .anticon {
+  padding: 12px;
+  background-color: #e8f0f9; /* Fundo azul bem claro para o ícone */
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(33, 67, 110, 0.1); /* Sombra sutil azul */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.pricing-highlight-section.light-theme .ph-icon-header:hover .anticon {
+  transform: scale(1.1) rotate(10deg);
+  box-shadow: 0 6px 15px rgba(33, 67, 110, 0.15);
+}
+
+.pricing-highlight-section.light-theme .ph-title {
+  font-size: 2.2rem !important;
+  font-weight: 700 !important;
+  color: #21436e !important; /* Título na cor primária azul */
+  margin-bottom: 20px !important;
+  line-height: 1.25 !important;
+}
+
+.pricing-highlight-section.light-theme .ph-price-display-wrapper {
+  background-color: #f8faff; /* Fundo azul muito claro para o display do preço */
+  border: 1px solid #dde6f0; /* Borda sutil */
+  padding: 20px 25px;
+  border-radius: 10px;
+  display: inline-block;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 25px rgba(33, 67, 110, 0.08); /* Sombra azulada suave */
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.pricing-highlight-section.light-theme .ph-price-display-wrapper:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 35px rgba(33, 67, 110, 0.12);
+  border-color: #21436e; /* Borda destaca no hover */
+}
+
+/* Faíscas animadas */
+.pricing-highlight-section.light-theme .ph-sparkle {
+  position: absolute;
+  font-size: 16px;
+  color: #f1c40f; /* Faíscas amarelas para contraste */
+  opacity: 0;
+  animation: sparkleAnim 1.5s infinite;
+}
+/* Posições das faíscas mantidas */
+.ph-sparkle.sparkle-1 { top: -10px; left: -5px; animation-delay: 0s; }
+.ph-sparkle.sparkle-2 { top: 5px; right: -15px; animation-delay: 0.3s; }
+.ph-sparkle.sparkle-3 { bottom: -5px; left: 20%; animation-delay: 0.6s; }
+.ph-sparkle.sparkle-4 { bottom: 10px; right: 15%; animation-delay: 0.9s; }
+
+@keyframes sparkleAnim { /* Animação mantida */
+  0%, 100% { opacity: 0; transform: scale(0.5) translateY(0px); }
+  50% { opacity: 1; transform: scale(1.2) translateY(-5px); }
+  70% { opacity: 0.8; transform: scale(1) translateY(0px); }
+}
+
+.pricing-highlight-section.light-theme .ph-price-label {
+  display: block;
+  font-size: 0.9rem;
+  color: #5a6e8b; /* Azul acinzentado para o label */
+  margin-bottom: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.pricing-highlight-section.light-theme .ph-price-main {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  color: #21436e; /* Preço na cor primária azul */
+  margin-bottom: 3px;
+}
+/* Cor do preço pode ser o amarelo para maior destaque, se preferir: */
+/* .pricing-highlight-section.light-theme .ph-price-main { color: #f1c40f; } */
+/* .pricing-highlight-section.light-theme .ph-price-main span { text-shadow: 1px 1px 2px rgba(33,67,110,0.1); } */
+
+
+.pricing-highlight-section.light-theme .ph-price-currency {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-right: 4px;
+  align-self: flex-start;
+  margin-top: 4px;
+}
+
+.pricing-highlight-section.light-theme .ph-price-value {
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #d35400; /* Laranja/Vermelho para o valor do preço para destaque máximo */
+  /* Ou mantenha o azul: color: #21436e; */
+  /* Ou amarelo: color: #f1c40f; */
+}
+
+.pricing-highlight-section.light-theme .ph-price-cents {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-left: 1px;
+}
+
+.pricing-highlight-section.light-theme .ph-price-condition {
+  display: block;
+  font-size: 0.85rem;
+  color: #7f8c8d; /* Cinza para a condição */
+  margin-top: 5px;
+}
+
+.pricing-highlight-section.light-theme .ph-benefits-list {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  font-size: 0.95rem;
+  color: #34495e; /* Cinza escuro para os benefícios */
+}
+.pricing-highlight-section.light-theme .ph-benefits-list.compact-benefits span {
+  margin: 0 8px;
+  display: inline-block;
+  white-space: nowrap;
+}
+.pricing-highlight-section.light-theme .ph-benefits-list .anticon {
+  color: #27ae60; /* Verde para checkmarks */
+  margin-right: 6px;
+  font-size: 1em;
+}
+
+.pricing-highlight-section.light-theme .ph-cta-button.ant-btn-primary {
+  background-color: #21436e !important; /* Botão na cor primária azul */
+  border-color: #21436e !important;
+  color: #ffffff !important; /* Texto branco no botão */
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  padding: 12px 35px !important;
+  height: auto !important;
+  border-radius: 8px !important;
+  box-shadow: 0 6px 15px rgba(33, 67, 110, 0.2); /* Sombra azul */
+  transition: transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1), 
+              box-shadow 0.3s cubic-bezier(0.215, 0.61, 0.355, 1), 
+              background-color 0.3s ease;
+}
+.pricing-highlight-section.light-theme .ph-cta-button.ant-btn-primary:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 10px 22px rgba(33, 67, 110, 0.3);
+  background-color: #1b3659 !important; /* Azul mais escuro no hover */
+}
+
+.pricing-highlight-section.light-theme .ph-guarantee-text {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #7f8c8d; /* Cinza para o texto de garantia */
+  font-style: italic;
+}
+
+/* Elementos decorativos de fundo (originais) - Removidos ou com cores ajustadas */
+/* Se mantidos, precisam de cores que funcionem bem com fundo branco */
+/* .ph-decorative-bg-shape { display: none; } */
+
+
+/* Novos elementos gráficos de fundo (pequenas formas) */
+.pricing-highlight-section.light-theme .ph-bg-graphic {
+  position: absolute;
+  opacity: 0.5; /* Mais visível em fundo branco */
+  z-index: 0;
+  pointer-events: none;
+  /* Cor base para as formas: um azul bem claro ou cinza */
+  color: rgba(33, 67, 110, 0.15); /* Azul primário com baixa opacidade */
+  animation: floatGraphic 15s infinite alternate ease-in-out;
+}
+.pricing-highlight-section.light-theme .ph-bg-circle-1 {
+  width: 60px;
+  height: 60px;
+  background-color: currentColor;
+  border-radius: 50%;
+  top: 15%;
+  left: 10%;
+  animation-delay: -2s;
+}
+.pricing-highlight-section.light-theme .ph-bg-plus-1 {
+  font-size: 50px;
+  top: 70%;
+  right: 12%;
+  animation-delay: -5s;
+}
+.pricing-highlight-section.light-theme .ph-bg-plus-1::before {
+  content: '+';
+}
+.pricing-highlight-section.light-theme .ph-bg-triangle-1 {
+  width: 0;
+  height: 0;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-bottom: 50px solid currentColor;
+  top: 20%;
+  right: 20%;
+  animation-delay: -8s;
+  transform: rotate(20deg);
+}
+
+@keyframes floatGraphic { /* Animação mantida */
+  0% { transform: translateY(0px) translateX(0px) rotate(0deg) scale(0.9); opacity: 0.1; } /* Opacidade menor para fundo claro */
+  50% { transform: translateY(-15px) translateX(10px) rotate(15deg) scale(1); opacity: 0.2; } /* Opacidade menor para fundo claro */
+  100% { transform: translateY(0px) translateX(0px) rotate(0deg) scale(0.9); opacity: 0.1; } /* Opacidade menor para fundo claro */
+}
+
+
+/* Animações de entrada (mantidas) */
+.animate-pop-in { opacity: 0; transform: scale(0.5); animation: popInAnim 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards; }
+.animate-fade-in-up { opacity: 0; transform: translateY(30px); animation: fadeInUpAnim 0.8s ease-out forwards; }
+.animate-zoom-in { opacity: 0; transform: scale(0.8); animation: zoomInAnim 0.7s ease-out forwards; }
+
+@keyframes popInAnim { to { opacity: 1; transform: scale(1); } }
+@keyframes fadeInUpAnim { to { opacity: 1; transform: translateY(0); } }
+@keyframes zoomInAnim { to { opacity: 1; transform: scale(1); } }
+
+/* Delays (mantidos) */
+.pricing-highlight-section.light-theme .delay-0 { animation-delay: 0.1s; }
+.pricing-highlight-section.light-theme .delay-1 { animation-delay: 0.25s; }
+.pricing-highlight-section.light-theme .delay-2 { animation-delay: 0.4s; }
+.pricing-highlight-section.light-theme .delay-3 { animation-delay: 0.55s; }
+.pricing-highlight-section.light-theme .delay-4 { animation-delay: 0.7s; }
+.pricing-highlight-section.light-theme .delay-5 { animation-delay: 0.85s; }
+
+
+/* Responsividade */
+@media (max-width: 767px) {
+  .pricing-highlight-section.light-theme {
+    padding: 50px 20px;
+  }
+  .pricing-highlight-section.light-theme .ph-title {
+    font-size: 1.9rem !important;
+  }
+  .pricing-highlight-section.light-theme .ph-price-value {
+    font-size: 3.5rem;
+  }
+  .pricing-highlight-section.light-theme .ph-price-currency,
+  .pricing-highlight-section.light-theme .ph-price-cents {
+    font-size: 1.6rem;
+  }
+  .pricing-highlight-section.light-theme .ph-benefits-list.compact-benefits span {
+    display: block;
+    margin: 6px 0;
+    white-space: normal;
+  }
+  .pricing-highlight-section.light-theme .ph-cta-button.ant-btn-primary {
+    font-size: 0.95rem !important;
+    padding: 10px 25px !important;
+  }
+  .pricing-highlight-section.light-theme .ph-bg-graphic { display: none; } /* Ocultar formas em telas pequenas */
+  .pricing-highlight-section.light-theme .ph-sparkle { font-size: 14px; }
+}
+
+@media (max-width: 480px) {
+  .pricing-highlight-section.light-theme .ph-title {
+    font-size: 1.6rem !important;
+  }
+   .pricing-highlight-section.light-theme .ph-price-display-wrapper {
+    padding: 15px;
+  }
+  .pricing-highlight-section.light-theme .ph-price-value {
+    font-size: 3rem;
+  }
+  .pricing-highlight-section.light-theme .ph-price-currency,
+  .pricing-highlight-section.light-theme .ph-price-cents {
+    font-size: 1.4rem;
+  }
+  .pricing-highlight-section.light-theme .ph-icon-header { font-size: 36px; }
+  .pricing-highlight-section.light-theme .ph-icon-header .anticon { padding: 10px; }
+}
