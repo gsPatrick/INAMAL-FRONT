@@ -1,152 +1,163 @@
 /* src/components/Footer/Footer.css */
 .app-footer-v4 {
-  background-color: #0f172a; /* MESMO FUNDO ESCURO da OriginStorySection */
-  color: #b0c4de; /* Cor de texto clara padrão, como na OriginStory */
-  padding: 50px 40px; /* Padding similar, talvez um pouco menos vertical */
+  background-color: #0f172a;
+  color: #b0c4de;
+  /* Usar o padding menor como base para todas as telas, já que o layout será o mesmo */
+  padding: 30px 20px;
   position: relative;
   overflow: hidden;
   z-index: 5;
-  /* IMPORTANTE: margin-left: 280px; FOI REMOVIDO DAQUI */
-  /* O footer agora ocupará a largura total disponível abaixo do conteúdo */
-  border-top: 1px solid rgba(95, 168, 211, 0.2); /* Linha sutil no topo com o azul brilhante */
+  border-top: 1px solid rgba(95, 168, 211, 0.2);
 }
 
-/* Elementos de Fundo do Footer - Replicando OriginStorySection-v3 */
+/* Elementos de Fundo */
 .footer-bg-dots-pattern-v4 {
-  position: absolute;
-  top:0; left:0; width: 100%; height: 100%;
+  position: absolute; top:0; left:0; width: 100%; height: 100%;
   background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  background-size: 25px 25px;
-  opacity: 0.5; /* Mesma opacidade */
-  z-index: 0;
+  background-size: 25px 25px; opacity: 0.5; z-index: 0;
 }
 .footer-bg-gradient-overlay-v4 {
-  position: absolute;
-  top:0; left:0; width: 100%; height: 100%; /* Gradiente completo como na Origin */
+  position: absolute; top:0; left:0; width: 100%; height: 100%;
   background: linear-gradient(180deg, rgba(15, 23, 42, 0) 0%, rgba(15, 23, 42, 0.7) 70%, #0f172a 100%);
   z-index: 1;
 }
-.footer-bg-blur-shape { /* Classe genérica mantida */
+.footer-bg-blur-shape {
   position: absolute; border-radius: 50%; z-index: 0; filter: blur(100px);
 }
-.shape-footer-1-v4 { /* Shape 1 para o footer */
-  width: 400px; height: 400px; background-color: rgba(33, 67, 110, 0.25); /* Cor primária sutil */
-  bottom: -150px; left: -100px;
+
+/* Shapes de fundo - Mantemos o tamanho maior para desktop para não parecerem muito pequenas,
+   mas o layout do conteúdo será o mesmo do mobile. */
+.shape-footer-1-v4 {
+  width: 400px; height: 400px; /* Tamanho desktop */
+  background-color: rgba(33, 67, 110, 0.25);
+  bottom: -150px; left: -100px; /* Posição desktop */
   animation: bgShapeDriftFooter 45s infinite alternate ease-in-out;
 }
-.shape-footer-2-v4 { /* Shape 2 para o footer */
-  width: 350px; height: 350px; background-color: rgba(79, 125, 186, 0.15); /* Azul secundário sutil */
-  top: -120px; right: -80px;
+.shape-footer-2-v4 {
+  width: 350px; height: 350px; /* Tamanho desktop */
+  background-color: rgba(79, 125, 186, 0.15);
+  top: -120px; right: -80px; /* Posição desktop */
   animation: bgShapeDriftFooter 40s infinite alternate-reverse ease-in-out;
   animation-delay: -5s;
 }
-@keyframes bgShapeDriftFooter { /* Pode usar a mesma keyframes bgShapeDrift da OriginStory */
-  from { transform: translate(-30px, 20px) scale(0.9) rotate(-15deg); }
+
+/* A animação pode ser a mesma, ou ajustada se os tamanhos das shapes mudarem muito entre mobile/desktop */
+@keyframes bgShapeDriftFooter {
+  from { transform: translate(-30px, 20px) scale(0.9) rotate(-15deg); } /* Animação original desktop */
   to { transform: translate(30px, -20px) scale(1.1) rotate(15deg); }
 }
 
-
 .footer-container-v4 {
-  max-width: 1100px;
+  max-width: 1100px; /* Mantém o container com largura máxima */
   margin: 0 auto;
   position: relative;
   z-index: 2;
+  /* Layout padrão para TODAS AS TELAS (mobile e desktop) */
+  display: flex;
+  flex-direction: column; /* Empilha os itens verticalmente */
+  align-items: center;   /* Centraliza horizontalmente no container flex */
+  text-align: center;    /* Centraliza o texto dentro de cada item filho */
 }
+
+/* .footer-copyright-v4 e .footer-credits-v4 ocuparão 100% da largura do .footer-container-v4
+   devido ao comportamento padrão de itens de bloco ou itens flex em uma coluna,
+   o que é bom para a centralização do texto.
+*/
 
 .footer-copyright-v4 .ant-typography,
 .footer-credits-v4 .ant-typography {
-  font-size: 0.9rem;
-  color: #94a9c4; /* Cor de texto secundária da OriginStory para consistência */
+  /* Usar o tamanho de fonte menor como base para todas as telas */
+  font-size: 0.85rem;
+  color: #94a9c4;
   transition: color 0.3s ease;
+  line-height: 1.6;
+  display: block; /* Garante que text-align:center do pai funcione */
 }
 
 .footer-credits-v4 {
-  text-align: right;
+  /* Espaçamento entre copyright e créditos será aplicado em todas as telas */
+  margin-top: 10px;
 }
 
 .developed-by-v4 {
-  display: inline-flex;
+  display: inline-flex; /* Para alinhar coração e link */
   align-items: center;
+  /* A centralização é feita pelo text-align: center no .footer-container-v4 */
 }
 
 .heart-icon-v4 {
-  color: #e8526e; /* Cor do coração mantida */
-  margin: 0 5px;
+  color: #e8526e;
+  margin: 0 4px; /* Margem menor como base */
   animation: pulseHeartFooterV4 1.5s infinite ease-in-out;
 }
 @keyframes pulseHeartFooterV4 {
   0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.2); }
+  50% { transform: scale(1.15); }
 }
 
 .developer-link-v4.ant-typography {
-  color: #5fa8d3; /* Azul brilhante para o link, como na OriginStory */
+  color: #5fa8d3;
   font-weight: 600;
-  margin-left: 5px;
+  margin-left: 4px; /* Margem menor como base */
   display: inline-flex;
   align-items: center;
-  position: relative; /* Para o pseudo-elemento de sublinhado animado */
-  text-decoration: none !important; /* Remover sublinhado padrão */
+  position: relative;
+  text-decoration: none !important;
 }
-.developer-link-v4.ant-typography::after { /* Sublinhado animado */
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 1.5px;
-  bottom: -2px; /* Posição abaixo do texto */
-  left: 0;
-  background-color: #5fa8d3;
-  transform: scaleX(0);
-  transform-origin: bottom right;
+.developer-link-v4.ant-typography::after {
+  content: ''; position: absolute; width: 100%; height: 1.5px;
+  bottom: -2px; left: 0; background-color: #5fa8d3;
+  transform: scaleX(0); transform-origin: bottom right;
   transition: transform 0.3s ease-out;
 }
 .developer-link-v4.ant-typography:hover::after {
-  transform: scaleX(1);
-  transform-origin: bottom left;
+  transform: scaleX(1); transform-origin: bottom left;
 }
 .developer-link-v4.ant-typography:hover {
-  color: #7dc4e8; /* Azul mais claro no hover */
+  color: #7dc4e8;
 }
 .developer-link-v4.ant-typography .anticon {
-  margin-left: 6px;
-  font-size: 1.1em;
+  margin-left: 5px; /* Margem menor como base */
+  font-size: 1em; /* Tamanho menor como base */
   transition: transform 0.3s ease;
 }
 .developer-link-v4.ant-typography:hover .anticon {
-  transform: rotate(15deg) scale(1.1);
+  transform: rotate(10deg) scale(1.05);
 }
 
-
-/* Animação de entrada para o Footer (pode ser a mesma da OriginStory) */
-.animate-footer-in { /* A classe de animação pode ser genérica se o efeito for o mesmo */
+/* Animação de entrada */
+.animate-footer-in {
   opacity: 0;
-  transform: translateY(40px); /* Sutilmente maior para diferenciar da seção anterior */
-  animation: fadeInUpFooterV4 1s 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; /* Delay para aparecer após o conteúdo */
+  transform: translateY(30px);
+  animation: fadeInUpFooterV4 0.9s 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 @keyframes fadeInUpFooterV4 {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsividade */
-@media (max-width: 767px) { /* sm */
+/* Media Query para Desktop (min-width: 768px) - Apenas ajustes sutis, se necessário,
+   mas o layout principal (flex-direction: column) é mantido. */
+@media (min-width: 768px) {
   .app-footer-v4 {
-    /* margin-left: 0;  A MARGEM JÁ FOI REMOVIDA DA REGRA PRINCIPAL, ENTÃO ESTA LINHA NÃO É MAIS NECESSÁRIA PARA SOBRESCREVER */
-    padding: 40px 20px;
+    /* Pode aumentar o padding um pouco para desktop se desejar mais respiro,
+       mas o layout centralizado empilhado será mantido. */
+    padding: 40px 20px; /* Exemplo: um pouco mais de padding vertical */
   }
-  .footer-credits-v4,
-  .footer-copyright-v4 {
-    text-align: center;
+
+  /* Se quiser que o texto fique um pouco maior no desktop, mesmo centralizado: */
+  .footer-copyright-v4 .ant-typography,
+  .footer-credits-v4 .ant-typography {
+    font-size: 0.9rem; /* Aumenta um pouco a fonte para desktop */
   }
-  .footer-credits-v4 {
-    margin-top: 12px;
+
+  .heart-icon-v4 { margin: 0 5px; } /* Margens originais do ícone */
+  .developer-link-v4.ant-typography { margin-left: 5px; }
+  .developer-link-v4.ant-typography .anticon {
+    margin-left: 6px;
+    font-size: 1.1em; /* Ícone um pouco maior no desktop */
   }
-}
-@media (max-width: 575px) { /* xs */
-    .footer-copyright-v4 .ant-typography,
-    .footer-credits-v4 .ant-typography {
-        font-size: 0.85rem;
-    }
+
+  /* As shapes de fundo já estão com tamanhos de desktop por padrão acima,
+     mas se você as tivesse definido menores para mobile primeiro, aqui você as aumentaria.
+     No nosso caso, elas já estão com os tamanhos maiores. */
 }
