@@ -13,6 +13,7 @@ import {
   SettingFilled // Exemplo de ícone para elemento gráfico
 } from '@ant-design/icons';
 import './HowItWorksSection.css';
+import { handleCheckout } from '../../services/checkoutService';
 
 const { Title, Paragraph } = Typography;
 
@@ -104,7 +105,14 @@ const HowItWorksSection = () => {
 
         <Row justify="center" style={{ marginTop: '70px' }} className={`animate-fade-in-up-hw delay-${stepsData.length + 3}`}> {/* Ajustado delay */}
           <Col>
-            <Button type="primary" size="large" className="how-it-works-cta-button-v2" icon={<ExperimentOutlined />}>
+             <Button 
+              type="primary" 
+              size="large" 
+              className="how-it-works-cta-button-v2" 
+              icon={<ExperimentOutlined />}
+              // MODIFICAÇÃO AQUI
+              onClick={(e) => handleCheckout(e.currentTarget)}
+            >
               QUERO FAZER O TESTE AGORA
             </Button>
           </Col>

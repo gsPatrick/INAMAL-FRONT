@@ -10,6 +10,8 @@ import {
   DotChartOutlined, // Para pontos de dados/maturidade
 } from '@ant-design/icons';
 import './HeroSection.css';
+import { handleCheckout } from '../../services/checkoutService';
+
 
 const { Title, Paragraph } = Typography;
 
@@ -43,7 +45,8 @@ const HeroSection = () => {
               size="large"
               className="hero-cta-primary"
               icon={<PlayCircleOutlined />}
-              onClick={scrollToNextSection} // Este botão pode ter sua própria lógica de navegação ou scroll
+              // MODIFICAÇÃO AQUI
+              onClick={(e) => handleCheckout(e.currentTarget)} 
             >
               Iniciar Diagnóstico Agora
             </Button>

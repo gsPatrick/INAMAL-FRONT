@@ -10,6 +10,7 @@ import {
   CheckCircleFilled   // Para itens de lista
 } from '@ant-design/icons';
 import './AboutInamalSection.css';
+import { handleCheckout } from '../../services/checkoutService';
 
 const { Title, Paragraph } = Typography;
 
@@ -106,7 +107,14 @@ const AboutInamalSection = () => {
 
         <Row justify="center" style={{ marginTop: '50px' }} className={`animate-fade-in-up delay-${benefits.length + 4}`}>
           <Col>
-            <Button type="primary" size="large" className="about-v2-cta-button" icon={<ExperimentOutlined />}>
+            <Button 
+              type="primary" 
+              size="large" 
+              className="about-v2-cta-button" 
+              icon={<ExperimentOutlined />}
+              // MODIFICAÇÃO AQUI
+              onClick={(e) => handleCheckout(e.currentTarget)}
+            >
               QUERO FAZER O DIAGNÓSTICO AGORA
             </Button>
           </Col>
