@@ -2,15 +2,13 @@
 import React from 'react';
 import { Carousel, Card, Typography, Row, Col } from 'antd';
 import {
-  InboxOutlined, // Para recebimento/organização
-  BarcodeOutlined, // Para controle/tecnologia
-  UsergroupAddOutlined, // Para equipe/pessoas
-  ToolOutlined, // Para processos/ferramentas
-  AreaChartOutlined, // Para eficiência/dados
+  InboxOutlined,
+  BarcodeOutlined,
+  UsergroupAddOutlined,
+  AreaChartOutlined,
 } from '@ant-design/icons';
 import './WarehouseSnapshotSection.css';
 
-// Importe suas imagens aqui - substitua pelos caminhos corretos
 import warehouseImage1 from '../../assets/images/slider/almoxarifado.jpg';
 import warehouseImage2 from '../../assets/images/slider/almoxarifado2.jpg';
 import warehouseImage3 from '../../assets/images/slider/almoxarifado3.jpg';
@@ -31,69 +29,72 @@ const WarehouseSnapshotSection = () => {
       icon: <InboxOutlined />,
       title: 'Organização Eficaz',
       description: 'Do recebimento à expedição, um fluxo otimizado é crucial.',
-      color: '#27ae60', // Verde
+      color: '#27ae60',
     },
     {
       icon: <BarcodeOutlined />,
       title: 'Controle e Tecnologia',
       description: 'Sistemas e ferramentas que garantem precisão e agilidade.',
-      color: '#2980b9', // Azul
+      color: '#2980b9',
     },
     {
       icon: <UsergroupAddOutlined />,
       title: 'Equipes Engajadas',
       description: 'O fator humano como pilar para a excelência operacional.',
-      color: '#f39c12', // Laranja
+      color: '#f39c12',
     },
     {
       icon: <AreaChartOutlined />,
       title: 'Gestão Orientada a Dados',
       description: 'Decisões baseadas em indicadores para melhoria contínua.',
-      color: '#8e44ad', // Roxo
+      color: '#8e44ad',
     },
   ];
 
   const carouselSettings = {
     autoplay: true,
-    autoplaySpeed: 5000, // 5 segundos
-    dots: true, // Mostrar pontos de navegação
-    effect: 'fade', // Efeito de transição (pode ser 'scroll' também)
+    autoplaySpeed: 5000,
+    dots: true,
+    effect: 'fade',
     pauseOnHover: true,
   };
 
   return (
-    <section className="warehouse-snapshot-section" id="warehouse-snapshot-section">
-      <div className="carousel-background-wrapper">
-        <Carousel {...carouselSettings} className="warehouse-carousel">
-          {sliderImages.map(img => (
-            <div key={img.id} className="carousel-slide">
-              <img src={img.src} alt={img.alt} className="carousel-image" />
-              <div className="carousel-image-overlay"></div> {/* Overlay para escurecer um pouco */}
-            </div>
-          ))}
-        </Carousel>
-      </div>
+    <section className="warehouse-snapshot-section modified-layout" id="warehouse-snapshot-section">
+      <div className="container">
+        {/* Carrossel como elemento separado no topo */}
+        <Row justify="center" className="carousel-standalone-row animate-fade-in-up delay-0">
+          <Col xs={24} md={22} lg={20}> {/* Controla a largura do carrossel */}
+            <Carousel {...carouselSettings} className="warehouse-carousel standalone">
+              {sliderImages.map(img => (
+                <div key={img.id} className="carousel-slide">
+                  <img src={img.src} alt={img.alt} className="carousel-image" />
+                </div>
+              ))}
+            </Carousel>
+          </Col>
+        </Row>
 
-      <div className="snapshot-content-overlay">
-        <div className="container">
-          <Row justify="center" className="section-header-snapshot animate-fade-in-up delay-0">
+        {/* Conteúdo textual e cards abaixo do carrossel */}
+        <div className="snapshot-text-and-cards-content">
+          <Row justify="center" className="section-header-snapshot animate-fade-in-up delay-1">
             <Col>
               <Title level={2} className="section-title-snapshot">
-                O Coração da Sua Operação: <span className="highlight-text-snapshot">O Almoxarifado</span>
+                O Coração da Sua Operação: <span className="highlight-text-snapshot">O Almoxarifado | INAMAL</span>
               </Title>
               <Paragraph className="section-subtitle-snapshot">
-                Explore os elementos chave que definem um almoxarifado eficiente, organizado e pronto para os desafios do mercado.
+                Não importa se você trabalha no estoque, lidera uma equipe ou toma decisões na diretoria: se você quer um almoxarifado mais organizado e que gere resultados, o INAMAL é pra você. Comece agora a transformação do seu setor.
               </Paragraph>
             </Col>
           </Row>
 
           <Row gutter={[24, 24]} justify="center" style={{ marginTop: '40px' }}>
             {snapshotCards.map((card, index) => (
-              <Col xs={24} sm={12} md={6} key={card.title} className={`animate-fade-in-up delay-${index + 1}`}>
+              <Col xs={24} sm={12} md={6} key={card.title} className={`animate-fade-in-up delay-${index + 2}`}>
                 <Card
                   hoverable
                   className="snapshot-card"
-                  style={{ '--card-accent-color': card.color }} // Passando a cor como CSS variable
+                  style={{ '--card-accent-color': card.color }}
                 >
                   <div className="snapshot-card-icon-wrapper">
                     {React.cloneElement(card.icon, { className: 'snapshot-card-icon' })}

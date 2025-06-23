@@ -191,18 +191,31 @@
 .how-it-works-cta-button-v2.ant-btn-primary {
   background-color: #21436e !important;
   border-color: #21436e !important;
-  padding: 14px 36px !important;
+  padding: 14px 30px !important; /* Padding base ajustado */
   height: auto !important;
-  font-size: 18px !important;
+  line-height: 1.5; /* Para melhor quebra de linha */
+  font-size: 17px !important; /* Tamanho da fonte base, ligeiramente reduzido */
   font-weight: 600 !important;
   border-radius: 8px !important;
   box-shadow: 0 6px 15px rgba(33, 67, 110, 0.25);
   transition: transform 0.3s cubic-bezier(0.215, 0.610, 0.355, 1),
               box-shadow 0.3s cubic-bezier(0.215, 0.610, 0.355, 1),
               background-color 0.3s;
+  display: inline-flex; /* Para alinhamento de ícone e texto */
+  align-items: center;
+  justify-content: center;
+  text-align: center; /* Centraliza texto se quebrar */
+  max-width: 100%; /* Botão não ultrapassa o container */
+  white-space: normal; /* Permite quebra de linha no texto */
+  word-break: break-word; /* Opcional */
 }
+
+.how-it-works-cta-button-v2.ant-btn-primary .anticon {
+  margin-right: 8px; /* Espaço entre ícone e texto */
+}
+
 .how-it-works-cta-button-v2.ant-btn-primary:hover {
-  transform: translateY(-5px) scale(1.03);
+  transform: translateY(-5px) scale(1.03); /* Leve ajuste no scale */
   box-shadow: 0 10px 22px rgba(33, 67, 110, 0.38);
   background-color: #1c385e !important;
 }
@@ -259,13 +272,13 @@
 
 /* Delays (usados no JSX) */
 .delay-0 { animation-delay: 0.1s; }
-.delay-1 { animation-delay: 0.3s; } /* Para a linha de fundo */
-.delay-2 { animation-delay: 0.6s; } /* Primeiro step */
+.delay-1 { animation-delay: 0.3s; }
+.delay-2 { animation-delay: 0.6s; }
 .delay-3 { animation-delay: 0.8s; }
 .delay-4 { animation-delay: 1.0s; }
 .delay-5 { animation-delay: 1.2s; }
 .delay-6 { animation-delay: 1.4s; }
-.delay-7 { animation-delay: 1.6s; } /* Último step */
+.delay-7 { animation-delay: 1.6s; }
 
 
 /* Responsividade */
@@ -292,14 +305,37 @@
   .step-item-title { font-size: 1.2rem !important; }
   .step-item-description { font-size: 0.95rem; }
 
-  .step-item-graphic-element { display: none; } /* Esconder elementos gráficos internos no mobile para não poluir */
+  .step-item-graphic-element { display: none; }
 
   .decorative-pulse-circle.circle-bg-1 { left: -150px; width: 250px; height: 250px; }
   .decorative-pulse-circle.circle-bg-2 { right: -120px; width: 300px; height: 300px; }
+
+  /* Ajustes para o botão CTA */
+  .how-it-works-cta-button-v2.ant-btn-primary {
+    font-size: 15px !important;
+    padding: 12px 20px !important;
+  }
 }
 
 @media (max-width: 480px) {
-  .step-item-icon-wrapper { width: 70px; height: 70px; } /* Manter tamanho do ícone um pouco maior */
+  .step-item-icon-wrapper { width: 70px; height: 70px; }
   .step-item-icon { font-size: 30px; }
   .step-number-badge { width: 24px; height: 24px; font-size: 0.8rem; }
+
+  /* Ajustes para o botão CTA */
+  .how-it-works-cta-button-v2.ant-btn-primary {
+    font-size: 14px !important;
+    padding: 10px 15px !important;
+  }
+  .how-it-works-cta-button-v2.ant-btn-primary .anticon {
+    margin-right: 6px;
+  }
+}
+
+@media (max-width: 360px) {
+    /* Ajustes para o botão CTA em telas extra pequenas */
+    .how-it-works-cta-button-v2.ant-btn-primary {
+        font-size: 13px !important;
+        padding: 8px 10px !important;
+    }
 }

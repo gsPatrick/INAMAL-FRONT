@@ -28,29 +28,7 @@
 
 .about-inamal-section-v2 .section-title .highlight-text {
   color: #21436e;
-  /* Efeito de underline animado no hover do título (opcional) */
-  /* position: relative;
-  display: inline-block; */
 }
-/*
-.about-inamal-section-v2 .section-title .highlight-text::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 3px;
-  display: block;
-  margin-top: 5px;
-  right: 0;
-  background: #21436e;
-  transition: width .3s ease;
-  -webkit-transition: width .3s ease;
-}
-.about-inamal-section-v2 .section-title:hover .highlight-text::after {
-  width: 100%;
-  left: 0;
-  background: #21436e;
-}
-*/
 
 .about-inamal-section-v2 .section-subtitle {
   font-size: 1.2rem !important; /* Aumentar subtítulo */
@@ -177,7 +155,7 @@
   border: none; /* Remover borda padrão */
   background-color: #ffffff; /* Fundo branco padrão */
   color: #2c3e50; /* Cor de texto padrão */
-  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), 
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
               box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
               background-color 0.4s ease,
               color 0.4s ease;
@@ -215,7 +193,7 @@
   transition: color 0.4s ease;
 }
 .benefit-card:hover .benefit-icon {
-  color: #21436e; /* Manter cor do ícone, ou trocar se preferir (ex: #1890ff) */
+  color: #21436e;
 }
 
 .benefit-title {
@@ -252,17 +230,30 @@
 .about-v2-cta-button.ant-btn-primary {
   background-color: #21436e !important;
   border-color: #21436e !important;
-  padding: 14px 36px !important; /* Aumentar */
+  padding: 14px 30px !important; /* Padding base, ligeiramente ajustado */
   height: auto !important;
-  font-size: 18px !important; /* Aumentar */
+  line-height: 1.5; /* Para melhor quebra de linha */
+  font-size: 17px !important; /* Tamanho da fonte base, ligeiramente reduzido */
   font-weight: 600 !important;
-  box-shadow: 0 6px 15px rgba(33, 67, 110, 0.3); /* Aumentar sombra */
+  box-shadow: 0 6px 15px rgba(33, 67, 110, 0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  display: inline-flex; /* Para alinhamento de ícone e texto */
+  align-items: center;
+  justify-content: center;
+  text-align: center; /* Centraliza texto se quebrar */
+  max-width: 100%; /* Botão não ultrapassa o container */
+  white-space: normal; /* Permite quebra de linha no texto */
+  word-break: break-word; /* Opcional, para palavras muito longas */
 }
+
+.about-v2-cta-button.ant-btn-primary .anticon {
+  margin-right: 8px; /* Espaço entre ícone e texto */
+}
+
 .about-v2-cta-button.ant-btn-primary:hover {
-  transform: translateY(-4px) scale(1.02); /* Mais efeito no hover */
+  transform: translateY(-4px) scale(1.02);
   box-shadow: 0 8px 20px rgba(33, 67, 110, 0.4);
-  background-color: #1b3659 !important; /* Levemente mais escuro no hover */
+  background-color: #1b3659 !important;
 }
 
 /* Elementos decorativos de fundo */
@@ -311,30 +302,27 @@
 }
 .animate-zoom-in { animation: zoomIn 0.7s ease-out forwards; opacity: 0; }
 
-/* Animações de entrada (fade-in-up reutilizada com nome original) */
 .animate-fade-in-up { opacity: 0; transform: translateY(40px); animation: fadeInUp 0.8s ease-out forwards; }
 @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
 
 
-/* Delays (revisados no JSX para melhor efeito cascata) */
 .delay-0 { animation-delay: 0.1s; }
 .delay-1 { animation-delay: 0.3s; }
-.delay-2 { animation-delay: 0.5s; } /* Gráfico */
-.delay-3 { animation-delay: 0.7s; } /* Texto principal */
-.delay-4 { animation-delay: 0.9s; } /* Card 1 */
-.delay-5 { animation-delay: 1.1s; } /* Card 2 */
-.delay-6 { animation-delay: 1.3s; } /* Card 3 */
-/* Os delays para automated-info e CTA no JSX foram ajustados para `benefits.length + 4` e `benefits.length + 5` */
+.delay-2 { animation-delay: 0.5s; }
+.delay-3 { animation-delay: 0.7s; }
+.delay-4 { animation-delay: 0.9s; }
+.delay-5 { animation-delay: 1.1s; }
+.delay-6 { animation-delay: 1.3s; }
 
 
-/* Responsividade (mantida, mas pode precisar de ajustes finos com os novos tamanhos) */
+/* Responsividade */
 @media (max-width: 991px) { /* md */
   .about-graphic-col {
     order: -1;
-    margin-bottom: 50px; /* Aumentar espaço */
+    margin-bottom: 50px;
   }
   .inamal-concept-graphic {
-    width: 200px; /* Ajustar */
+    width: 200px;
     height: 200px;
   }
   .main-graphic-icon { font-size: 70px; }
@@ -343,7 +331,7 @@
 
 @media (max-width: 767px) { /* sm */
   .about-inamal-section-v2 {
-    padding: 70px 20px; /* Ajustar */
+    padding: 70px 20px;
   }
   .section-title { font-size: 2.3rem !important; }
   .section-subtitle { font-size: 1.1rem !important; }
@@ -354,5 +342,27 @@
   .benefit-title { font-size: 1.25rem !important; }
   .benefit-description { font-size: 0.95rem; min-height: auto; }
 
-  .decorative-bg-element.element-3 { display: none; } /* Ocultar elemento central em telas pequenas */
+  .decorative-bg-element.element-3 { display: none; }
+
+  .about-v2-cta-button.ant-btn-primary {
+    font-size: 15px !important; /* Reduzir fonte */
+    padding: 12px 20px !important; /* Reduzir padding */
+  }
+}
+
+@media (max-width: 480px) { /* xs para o botão */
+  .about-v2-cta-button.ant-btn-primary {
+    font-size: 14px !important; /* Fonte ainda menor */
+    padding: 10px 15px !important; /* Padding ainda menor */
+  }
+  .about-v2-cta-button.ant-btn-primary .anticon {
+    margin-right: 6px; /* Menos espaço para o ícone */
+  }
+}
+
+@media (max-width: 360px) { /* Para telas extra pequenas */
+    .about-v2-cta-button.ant-btn-primary {
+        font-size: 13px !important;
+        padding: 8px 10px !important;
+    }
 }

@@ -12,8 +12,7 @@ import {
 } from '@ant-design/icons';
 import './Header.css';
 import logoSrc from '../../assets/images/logo.png';
-// PASSO 1: Importar a função de checkout
-import { handleCheckout } from '../../services/checkoutService';
+import { handleCheckout } from '../../services/checkoutService'; // Garantir que o caminho está correto
 
 const { Header: AntHeader } = Layout;
 
@@ -31,10 +30,10 @@ const AppHeader = () => {
     { key: '4', label: 'Como surgiu', icon: <TeamOutlined />, path: '/#origin-story-section' },
   ];
 
-  // PASSO 2: Mudar o path do CTA para um identificador único que não seja um hash de scroll
-  const ctaMenuItem = { key: '0', label: 'FAZER DIAGNÓSTICO', icon: <ExperimentOutlined />, path: '/checkout' };
+  // Identificador para o item de menu/botão que aciona o checkout
+  const ctaTriggerPath = '/trigger-checkout';
+  const ctaMenuItem = { key: 'cta-checkout', label: 'FAZER DIAGNÓSTICO', icon: <ExperimentOutlined />, path: ctaTriggerPath };
 
-  // Lógica para efeito de scroll (mantida)
   useEffect(() => {
     const handleScroll = () => {
       setIsHeaderScrolled(window.scrollY > 50);
@@ -43,7 +42,6 @@ const AppHeader = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Lógica para responsividade (mantida)
   useEffect(() => {
     const handleResize = () => {
       const mobileState = window.innerWidth < 992;
@@ -58,7 +56,6 @@ const AppHeader = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, [isMobile, drawerVisible]);
 
-  // Lógica para definir a chave ativa do menu (ajustada para ignorar o CTA)
   let activeKey = '';
   const currentFullPath = location.pathname + location.hash;
   const matchedItem = menuItemsData.find(item => item.path === currentFullPath);
@@ -66,105 +63,132 @@ const AppHeader = () => {
     activeKey = matchedItem.key;
   }
 
-  // PASSO 3: Criar a função de clique no menu que diferencia o checkout dos links de scroll
-  const handleMenuClick = (path, event) => {
-    // Se o path for o nosso path especial de checkout, chama a função e para a execução
-    if (path === '/checkout') {
-      // Passamos o elemento do botão para a função de checkout
-      handleCheckout(event.currentTarget); 
-      return;
+  const processCheckout = (targetElement) => {
+    console.log('[Header] Processando checkout. Elemento alvo:', targetElement);
+    if (typeof handleCheckout === 'function') {
+      try {
+        handleCheckout(targetElement);
+        console.log('[Header] handleCheckout chamado com sucesso.');
+      } catch (error) {
+        console.error('[Header] Erro ao chamar handleCheckout:', error);
+      }
+    } else {
+      console.error('[Header] ERRO: handleCheckout não é uma função ou não foi importada corretamente.');
     }
+    if (drawerVisible) {
+      setDrawerVisible(false);
+    }
+  };
 
-    // Se não for o checkout, executa a lógica de scroll normal
-    const [pathnameOnly, hashFragment] = path.split('#');
-    
+  const handleNavigationAndScroll = (path) => {
+    console.log('[Header] Navegando ou scrollando para:', path);
     if (drawerVisible) {
       setDrawerVisible(false);
     }
 
+    const [pathnameOnly, hashFragment] = path.split('#');
+
     const performScroll = (targetId) => {
-      // Adiciona um pequeno delay para o drawer fechar antes do scroll
       setTimeout(() => {
         if (targetId) {
           const element = document.getElementById(targetId);
           if (element) {
-            // A altura do header encolhido é 80px, vamos considerar isso no scroll
-            const headerOffset = 80; 
+            const headerOffset = isHeaderScrolled ? 80 : 120; // Ajusta o offset baseado no estado do header
             const elementPosition = element.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-      
-            window.scrollTo({
-              top: offsetPosition,
-              behavior: 'smooth'
-            });
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
           } else {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            console.warn(`[Header] Elemento com ID '${targetId}' não encontrado para scroll.`);
+            window.scrollTo({ top: 0, behavior: 'smooth' }); // Fallback para o topo
           }
         } else {
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-      }, drawerVisible ? 300 : 0);
+      }, drawerVisible ? 250 : 0); // Pequeno delay para drawer fechar
     };
 
-    if (location.pathname === (pathnameOnly || '/')) {
+    if (location.pathname === (pathnameOnly || '/') && hashFragment) {
       performScroll(hashFragment);
+    } else if (pathnameOnly === '/' && !hashFragment) { // Link para a home (topo)
+        navigate('/');
+        performScroll(); // Scroll para o topo
     } else {
       navigate(pathnameOnly || '/');
-      // Espera um pouco para a nova página carregar antes de tentar o scroll
-      setTimeout(() => {
-        performScroll(hashFragment);
-      }, 100);
+      if (hashFragment) {
+        // Espera um pouco para a nova página carregar antes de tentar o scroll
+        // Idealmente, isso seria tratado com um estado de "loading" ou callback da navegação
+        setTimeout(() => performScroll(hashFragment), 200);
+      } else {
+        setTimeout(() => performScroll(), 200); // Scroll para o topo da nova página
+      }
     }
   };
 
-  // PASSO 4: Renderizar os itens do menu, passando o evento de clique para o handler
-  const renderMenuItems = (inDrawer = false) => (
-    <>
-      <Menu
-        mode={inDrawer ? 'inline' : 'horizontal'}
-        selectedKeys={[activeKey]}
-        className={`app-menu ${inDrawer ? 'drawer-menu' : 'horizontal-menu'}`}
-        theme="light"
-      >
-        {inDrawer && (
-          <Menu.Item
-            key={ctaMenuItem.key}
+
+  const renderMenuItems = (inDrawer = false) => {
+    // Itens de menu para o Ant Design Menu component
+    const antdMenuItems = [
+      // Adiciona o item CTA primeiro se estiver no drawer
+      ...(inDrawer ? [{
+        key: ctaMenuItem.key,
+        icon: ctaMenuItem.icon,
+        label: ctaMenuItem.label,
+        className: 'menu-item-cta-drawer', // Classe específica para estilização no drawer
+        onClick: (e) => { // e aqui é o evento do Ant Design Menu ({ item, key, keyPath, domEvent })
+          console.log('[Header] CTA Drawer clicado. Evento AntD:', e);
+          processCheckout(e.domEvent.target.closest('li')); // Passa o elemento <li>
+        }
+      }] : []),
+      ...menuItemsData.map(item => ({
+        key: item.key,
+        icon: item.icon,
+        label: item.label,
+        onClick: () => handleNavigationAndScroll(item.path)
+      }))
+    ];
+
+    return (
+      <>
+        <Menu
+          mode={inDrawer ? 'inline' : 'horizontal'}
+          selectedKeys={[activeKey]}
+          items={antdMenuItems} // Usa a propriedade 'items'
+          className={`app-menu ${inDrawer ? 'drawer-menu' : 'horizontal-menu'}`}
+          theme="light"
+          // O onClick nos items individuais já lida com as ações
+        />
+        {!inDrawer && (
+          <Button
+            key={ctaMenuItem.key} // Chave para React, não necessariamente para lógica de menu aqui
+            type="primary"
             icon={ctaMenuItem.icon}
-            onClick={(e) => handleMenuClick(ctaMenuItem.path, e.domEvent.target.closest('li'))}
-            className="menu-item-cta-drawer"
+            onClick={(e) => {
+              console.log('[Header] CTA Desktop (Button) clicado. Evento DOM:', e);
+              processCheckout(e.currentTarget); // Passa o elemento <button>
+            }}
+            className="menu-item-cta-desktop"
           >
             {ctaMenuItem.label}
-          </Menu.Item>
+          </Button>
         )}
-        {menuItemsData.map(item => (
-          <Menu.Item
-            key={item.key}
-            icon={item.icon}
-            onClick={(e) => handleMenuClick(item.path, e.domEvent.target.closest('li'))}
-          >
-            {item.label}
-          </Menu.Item>
-        ))}
-      </Menu>
-      {!inDrawer && (
-        <Button
-          key={ctaMenuItem.key}
-          type="primary"
-          icon={ctaMenuItem.icon}
-          onClick={(e) => handleMenuClick(ctaMenuItem.path, e.currentTarget)}
-          className="menu-item-cta-desktop"
-        >
-          {ctaMenuItem.label}
-        </Button>
-      )}
-    </>
-  );
+      </>
+    );
+  };
+
+
+  const handleLogoClick = (e) => {
+    e.preventDefault();
+    if (drawerVisible) {
+      setDrawerVisible(false);
+    }
+    handleNavigationAndScroll('/'); // Leva para o topo da página inicial
+  };
 
   return (
     <AntHeader className={`app-header-horizontal-v3 ${isHeaderScrolled ? 'scrolled' : ''}`}>
       <Row justify="space-between" align="middle" style={{ height: '100%', width: '100%'}} wrap={false}>
         <Col flex="none" className="logo-container-horizontal-v3">
-          <Link to="/" onClick={(e) => { e.preventDefault(); handleMenuClick('/'); }}>
+          <Link to="/" onClick={handleLogoClick}>
             <Avatar src={logoSrc} alt="INAMAL Logo" className="logo-image-v3" />
           </Link>
         </Col>
@@ -176,6 +200,7 @@ const AppHeader = () => {
               type="text"
               icon={<MenuOutlined />}
               onClick={() => setDrawerVisible(true)}
+              aria-label="Abrir menu"
             />
           ) : (
             renderMenuItems(false)
@@ -184,7 +209,7 @@ const AppHeader = () => {
       </Row>
       <Drawer
         title={
-          <Link to="/" onClick={(e) => { e.preventDefault(); handleMenuClick('/'); setDrawerVisible(false); }}>
+          <Link to="/" onClick={handleLogoClick}>
             <Avatar src={logoSrc} alt="INAMAL Logo" style={{ marginRight: 12, verticalAlign: 'middle' }} size={40} />
             <span style={{ verticalAlign: 'middle', fontWeight: 600, color: '#21436e'}}>INAMAL</span>
           </Link>
@@ -195,6 +220,7 @@ const AppHeader = () => {
         className="app-menu-drawer-v3"
         bodyStyle={{ padding: 0 }}
         width={300}
+        closeIcon={<MenuOutlined style={{color: '#1e3a8a', fontSize: '20px'}}/>} // Exemplo de ícone de fechar, ajuste
       >
         {renderMenuItems(true)}
       </Drawer>

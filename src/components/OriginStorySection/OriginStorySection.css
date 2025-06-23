@@ -21,40 +21,43 @@
   background: linear-gradient(180deg, rgba(15, 23, 42, 0) 0%, rgba(15, 23, 42, 0.7) 70%, #0f172a 100%);
   z-index: 1;
 }
-.section-bg-blur-shape { /* Mantido, mas cores ajustadas para fundo escuro */
-  position: absolute; border-radius: 50%; z-index: 0; filter: blur(100px); /* Mais blur */
+.section-bg-blur-shape {
+  position: absolute; border-radius: 50%; z-index: 0; filter: blur(100px);
 }
 .shape-story-1-v3 {
-  width: 600px; height: 600px; background-color: rgba(33, 67, 110, 0.3); /* Cor primária com opacidade */
+  width: 600px; height: 600px; background-color: rgba(33, 67, 110, 0.3);
   top: -50px; left: -150px; animation: bgShapeDrift 45s infinite alternate ease-in-out;
 }
 .shape-story-2-v3 {
-  width: 500px; height: 500px; background-color: rgba(79, 125, 186, 0.2); /* Azul secundário com opacidade */
+  width: 500px; height: 500px; background-color: rgba(79, 125, 186, 0.2);
   bottom: -80px; right: -120px; animation: bgShapeDrift 40s infinite alternate-reverse ease-in-out; animation-delay: -7s;
 }
-/* Keyframes bgShapeDrift mantido */
+@keyframes bgShapeDrift { /* Adicionado para referência, se não estiver em outro lugar */
+  from { transform: translate(-30px, 20px) scale(0.9) rotate(-15deg); }
+  to { transform: translate(30px, -20px) scale(1.1) rotate(15deg); }
+}
 
 
 .origin-story-section-v3 .container {
-  max-width: 950px; margin: 0 auto; position: relative; z-index: 3; /* Acima dos bgs */
+  max-width: 950px; margin: 0 auto; position: relative; z-index: 3;
 }
 
 .origin-story-section-v3 .section-header { text-align: center; margin-bottom: 70px; }
 .origin-story-section-v3 .section-title {
   font-size: 2.8rem !important; font-weight: 700 !important;
-  color: #e0e9f5 !important; /* Texto claro para fundo escuro */
+  color: #e0e9f5 !important;
   margin-bottom: 18px !important; line-height: 1.3;
 }
-.origin-story-section-v3 .highlight-text { color: #5fa8d3; } /* Um azul mais brilhante para destaque */
+.origin-story-section-v3 .highlight-text { color: #5fa8d3; }
 
 .origin-story-section-v3 .section-subtitle {
-  font-size: 1.2rem !important; color: #b0c4de !important; /* Cinza azulado claro */
+  font-size: 1.2rem !important; color: #b0c4de !important;
   max-width: 750px; margin: 0 auto; line-height: 1.6;
 }
 
 /* Timeline Styling v3 */
 .story-timeline-v3 { position: relative; padding: 30px 0; }
-.story-timeline-v3::before { /* Linha central */
+.story-timeline-v3::before {
   content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 3px;
   background: linear-gradient(to bottom, rgba(95, 168, 211, 0) 0%, rgba(95, 168, 211, 0.4) 20%, rgba(95, 168, 211, 0.4) 80%, rgba(95, 168, 211, 0) 100%);
   transform: translateX(-50%); z-index: 1; border-radius: 2px;
@@ -62,17 +65,17 @@
 
 .timeline-item-v3 {
   position: relative;
-  margin-bottom: 40px; /* Diminuído espaçamento vertical */
+  margin-bottom: 30px; /* Reduzido espaçamento vertical */
   width: 50%; padding: 0 35px; box-sizing: border-box; z-index: 2;
 }
 .timeline-item-v3:last-child { margin-bottom: 0; }
 .timeline-item-v3.item-left { left: 0; text-align: right; }
 .timeline-item-v3.item-right { left: 50%; text-align: left; }
 
-.timeline-item-v3::after { /* Indicador na linha */
+.timeline-item-v3::after {
   content: ''; position: absolute; width: 20px; height: 20px;
-  background-color: #0f172a; /* Cor de fundo da seção */
-  border: 4px solid #5fa8d3; /* Azul brilhante */
+  background-color: #0f172a;
+  border: 4px solid #5fa8d3;
   top: 30px; border-radius: 50%; z-index: 3;
   box-shadow: 0 0 15px rgba(95, 168, 211, 0.5);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -85,34 +88,34 @@
 
 
 .timeline-content-wrapper-v3 {
-  background-color: rgba(255, 255, 255, 0.03); /* Fundo do card muito sutil */
+  background-color: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 25px 30px; border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   position: relative; display: flex; align-items: flex-start; gap: 20px;
   transition: background-color 0.4s ease, border-color 0.4s ease, transform 0.3s ease;
-  backdrop-filter: blur(5px); /* Efeito de vidro fosco */
+  backdrop-filter: blur(5px);
 }
 .timeline-item-v3:hover .timeline-content-wrapper-v3 {
-  background-color: #5fa8d3; /* Cor de fundo no hover (azul brilhante) */
+  background-color: #5fa8d3;
   border-color: #7dc4e8;
   transform: translateY(-5px);
 }
 .timeline-item-v3:hover .timeline-content-wrapper-v3 .timeline-point-title-v3,
 .timeline-item-v3:hover .timeline-content-wrapper-v3 .timeline-point-text-v3,
 .timeline-item-v3:hover .timeline-content-wrapper-v3 .timeline-icon-main-v3 {
-  color: #0f172a !important; /* Texto escuro no hover */
+  color: #0f172a !important;
 }
 .timeline-item-v3:hover .timeline-content-wrapper-v3 .timeline-icon-main-wrapper-v3 {
-  background: #ffffff; /* Fundo do ícone escuro no hover */
+  background: #ffffff;
   box-shadow: 0 4px 12px rgba(0,0,0, 0.4);
 }
 
 
 .timeline-icon-main-wrapper-v3 {
   flex-shrink: 0; width: 60px; height: 60px; border-radius: 50%;
-  background: linear-gradient(135deg, #5fa8d3, #3a7ca0); /* Gradiente azul brilhante */
-  display: flex; justify-content: center; align-items: center; color: #0f172a; /* Ícone escuro */
+  background: linear-gradient(135deg, #5fa8d3, #3a7ca0);
+  display: flex; justify-content: center; align-items: center; color: #0f172a;
   box-shadow: 0 4px 12px rgba(95, 168, 211, 0.4);
   transition: background 0.4s ease, box-shadow 0.4s ease;
 }
@@ -122,19 +125,18 @@
 
 .timeline-text-content-v3 {}
 .timeline-point-title-v3 {
-  color: #c5d9ed !important; /* Cinza azulado claro */
+  color: #c5d9ed !important;
   font-weight: 600 !important; margin-bottom: 10px !important; font-size: 1.5rem !important;
   transition: color 0.4s ease;
 }
 .timeline-point-text-v3 {
-  color: #94a9c4; /* Cinza azulado mais claro */
+  color: #94a9c4;
   font-size: 0.95rem; line-height: 1.65;
   transition: color 0.4s ease;
 }
 
-/* Gráficos Decorativos da Timeline v3 */
 .timeline-decorative-graphic-v3 {
-  position: absolute; top: 50%; transform: translateY(-50%) scale(0.8); /* Menor e mais sutil */
+  position: absolute; top: 50%; transform: translateY(-50%) scale(0.8);
   width: 120px; height: 120px; pointer-events: none; opacity: 0.1; z-index: -1;
   transition: opacity 0.4s ease, transform 0.4s ease;
 }
@@ -166,25 +168,24 @@
 @keyframes beamShine { from { opacity: 0.3; height: 60%; } to { opacity: 0.8; height: 90%;} }
 @keyframes pulseElement { 0%, 100% { transform: scale(1) translateX(-50%); } 50% { transform: scale(1.15) translateX(-50%); } }
 
-/* Mensagem Final Card v3 */
 .final-message-row-v3 { margin-top: 80px; }
 .final-message-card-v3 {
-  background: rgba(255, 255, 255, 0.05); /* Fundo muito sutil, quase transparente */
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px); /* Vidro fosco mais forte */
+  backdrop-filter: blur(10px);
   color: #e0e9f5; padding: 40px 45px; border-radius: 15px; text-align: center;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3); position: relative; overflow: hidden;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 .final-message-card-v3:hover { transform: translateY(-10px); background: rgba(255, 255, 255, 0.08); }
-.card-bg-pattern-v3 { /* Pattern mais sutil no fundo escuro */
+.card-bg-pattern-v3 {
   position: absolute; top: 0; left: 0; width: 100%; height: 100%;
   background-image: linear-gradient(45deg, rgba(255,255,255,0.02) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.02) 75%, rgba(255,255,255,0.02)),
                     linear-gradient(45deg, rgba(255,255,255,0.02) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.02) 75%, rgba(255,255,255,0.02));
   background-size: 30px 30px; background-position: 0 0, 15px 15px;
   z-index: 0; opacity: 0.5;
 }
-.card-shine-effect { /* Efeito de brilho no hover */
+.card-shine-effect {
   position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
   background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%);
   transform: rotate(0deg); transition: transform 0.7s ease-out, opacity 0.7s ease-out; opacity: 0; pointer-events: none;
@@ -207,21 +208,32 @@
 
 /* Botão CTA Caprichado v3 */
 .origin-v3-cta-button.ant-btn-primary {
-  background: linear-gradient(135deg, #5fa8d3, #3a7ca0) !important; /* Gradiente azul brilhante */
+  background: linear-gradient(135deg, #5fa8d3, #3a7ca0) !important;
   border: none !important;
-  color: #0f172a !important; /* Texto escuro para contraste */
-  padding: 14px 35px !important; height: auto !important; font-size: 17px !important; font-weight: 700 !important;
+  color: #0f172a !important;
+  padding: 14px 25px !important; /* Padding base reduzido */
+  height: auto !important;
+  line-height: 1.5; /* Para melhor quebra de linha */
+  font-size: 16px !important; /* Fonte base reduzida */
+  font-weight: 700 !important;
   box-shadow: 0 6px 15px rgba(95, 168, 211, 0.3), 0 0 0 3px rgba(95, 168, 211, 0.2) inset;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   position: relative;
-  overflow: hidden; /* Para o background e partículas */
-  z-index: 1; /* Para garantir que o texto fique acima dos pseudo-elementos */
+  overflow: hidden;
+  z-index: 1;
+  display: inline-flex; /* Para alinhamento */
+  align-items: center;
+  justify-content: center;
+  text-align: center; /* Centraliza texto se quebrar */
+  max-width: 100%; /* Botão não ultrapassa o container */
+  white-space: normal; /* Permite quebra de linha no texto */
+  word-break: break-word; /* Opcional */
 }
-.origin-v3-cta-button span { position: relative; z-index: 2; } /* Texto acima do hover-bg */
+.origin-v3-cta-button span { position: relative; z-index: 2; }
 
-.origin-v3-cta-button .btn-hover-bg { /* Background animado no hover */
+.origin-v3-cta-button .btn-hover-bg {
   position: absolute; top:0; left:0; width: 100%; height: 100%;
-  background: linear-gradient(135deg, #ffffff, #8c9296) !important;
+  background: linear-gradient(135deg, #ffffff, #e0e9f5) !important; /* Cor de hover mais clara */
   transform: scaleX(0); transform-origin: left;
   transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   z-index: 1;
@@ -230,8 +242,8 @@
   transform: scaleX(1);
 }
 .origin-v3-cta-button:hover {
-  box-shadow: 0 8px 20px rgba(95, 168, 211, 0.4), 0 0 0 3px rgba(255,255,255,0.1) inset;
-  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(95, 168, 211, 0.4), 0 0 0 3px rgba(224, 233, 245, 0.2) inset; /* Sombra de hover mais clara */
+  transform: translateY(-2px) scale(1.02); /* Scale sutil no hover */
 }
 .origin-v3-cta-button .btn-particles { position: absolute; top:0; left:0; width: 100%; height: 100%; pointer-events: none; }
 .origin-v3-cta-button .particle {
@@ -240,53 +252,103 @@
   background-color: rgba(255,255,255,0.7);
   border-radius: 50%;
   opacity: 0;
+  /* Animação complexa de partículas pode ser simplificada ou removida para performance em mobile se necessário */
   animation: particleAnim 1s ease-out forwards;
 }
-.origin-v3-cta-button:hover .particle {
-  opacity: 1;
-  /* A posição será definida via JS ou animações mais complexas se precisar de movimento individual */
-  /* Exemplo de animação simples: */
-  top: calc(50% + (random() * 40px - 20px)); /* Math.random() não funciona em CSS puro assim */
-  left: calc(50% + (random() * 80px - 40px));
-  animation-delay: calc(random() * 0.5s);
-}
-/* Para simular random no CSS, podemos pré-definir alguns ou usar nth-child */
-.origin-v3-cta-button .particle:nth-child(1) { top: 20%; left: 30%; animation-delay: 0.1s;}
-.origin-v3-cta-button .particle:nth-child(2) { top: 70%; left: 80%; animation-delay: 0.2s;}
-/* ... e assim por diante, ou uma animação mais genérica */
-@keyframes particleAnim {
-  0% { transform: translate(0,0) scale(0); opacity: 0; }
-  50% { opacity: 1; }
-  100% { transform: translate(calc(random() * 30px - 15px), calc(random() * 30px - 15px)) scale(1); opacity: 0; }
-}
+.origin-v3-cta-button:hover .particle:nth-child(1) { top: 20%; left: 30%; animation-delay: 0.05s;}
+.origin-v3-cta-button:hover .particle:nth-child(2) { top: 70%; left: 80%; animation-delay: 0.1s;}
+.origin-v3-cta-button:hover .particle:nth-child(3) { top: 50%; left: 10%; animation-delay: 0.15s;}
+.origin-v3-cta-button:hover .particle:nth-child(4) { top: 30%; left: 90%; animation-delay: 0.2s;}
+.origin-v3-cta-button:hover .particle:nth-child(5) { top: 80%; left: 50%; animation-delay: 0.25s;}
+/* ... mais partículas se desejar ... */
 
-/* Animações de entrada */
+@keyframes particleAnim {
+  0% { transform: translate(0,0) scale(0) rotate(0deg); opacity: 0; }
+  20% { opacity: 1; } /* Partícula aparece rápido */
+  100% { transform: translate(calc(var(--x, 0) * 1px), calc(var(--y, 0) * 1px)) scale(0) rotate(360deg); opacity: 0; } /* Movimento e desaparecimento */
+}
+/* Para simular movimento aleatório, precisaríamos de JS para setar --x e --y,
+   ou podemos simplificar a animação para apenas fade in/out e scale.
+   Mantendo a animação anterior por enquanto.
+*/
+
+
 .animate-item-v3 { opacity: 0; transform: translateY(60px); animation: fadeInUpItemV3 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 @keyframes fadeInUpItemV3 { to { opacity: 1; transform: translateY(0); } }
-/* Delays */
 .delay-0 { animation-delay: 0.1s; } .delay-1 { animation-delay: 0.4s; } .delay-2 { animation-delay: 0.7s; }
 .delay-3 { animation-delay: 1.0s; } .delay-4 { animation-delay: 1.3s; } .delay-5 { animation-delay: 1.6s; } .delay-6 { animation-delay: 1.9s; }
 
-/* Responsividade (Ajustes finos podem ser necessários) */
-@media (max-width: 991px) { /* md */
+
+@media (max-width: 991px) {
   .timeline-item-v3,
   .timeline-item-v3.item-left,
-  .timeline-item-v3.item-right { width: 100%; left: 0; padding: 0 5px; }
-  .timeline-item-v3::after { left: -25px; top: 10px; }
-  .story-timeline-v3::before { left: 10px; }
-  .timeline-content-wrapper-v3 { margin-left: 20px; }
+  .timeline-item-v3.item-right { width: 100%; left: 0; padding: 0 5px 0 30px; /* Adiciona padding à esquerda para o conteúdo não colar na linha */ text-align: left !important; } /* Força alinhamento à esquerda */
+  .timeline-item-v3::after { left: 5px; /* Alinha o marcador com a linha da timeline */ transform: translateX(-50%); top: 30px; /* Mantém a altura original */ }
+  .timeline-item-v3.item-left .timeline-icon-main-wrapper-v3 { order: 0; } /* Ícone sempre primeiro */
+  .timeline-item-v3.item-left .timeline-text-content-v3 { order: 1; }   /* Texto depois do ícone */
+  .story-timeline-v3::before { left: 15px; /* Move a linha da timeline para a esquerda */ }
+  .timeline-content-wrapper-v3 { margin-left: 0; /* Remove margem, o padding no item já cuida disso */ }
   .timeline-decorative-graphic-v3 { display: none; }
+  .origin-story-section-v3 .section-header { margin-bottom: 50px; }
 }
-@media (max-width: 767px) { /* sm */
-  .origin-story-section-v3 { padding: 80px 15px; }
-  .section-title { font-size: 2rem !important; }
-  .section-subtitle { font-size: 1rem !important; }
+
+@media (max-width: 767px) {
+  .origin-story-section-v3 { padding: 60px 15px; }
+  .origin-story-section-v3 .section-title { font-size: 2rem !important; }
+  .origin-story-section-v3 .section-subtitle { font-size: 1rem !important; }
+
+  .timeline-item-v3 { padding: 0 0 0 25px; margin-bottom: 25px; } /* Ajusta padding para o conteúdo e reduz margem */
   .timeline-icon-main-wrapper-v3 { width: 50px; height: 50px; }
   .timeline-icon-main-v3 { font-size: 22px; }
-  .timeline-point-title-v3 { font-size: 1.2rem !important; }
-  .story-timeline-v3::before { left: 5px; }
-  .timeline-item-v3::after { left: -28px; width:16px; height:16px; border-width: 3px; top: 12px;}
-  .timeline-content-wrapper-v3 { margin-left: 10px; padding: 15px 20px; }
+  .timeline-point-title-v3 { font-size: 1.25rem !important; } /* Um pouco maior para manter hierarquia */
+  .timeline-point-text-v3 { font-size: 0.9rem; }
+  .story-timeline-v3::before { left: 8px; width: 2px; } /* Linha mais fina e mais à esquerda */
+  .timeline-item-v3::after { left: -3px; /* Posição ajustada do marcador */ width:14px; height:14px; border-width: 3px; top: 32px;}
+  .timeline-content-wrapper-v3 { padding: 20px; }
+
+  .final-message-row-v3 { margin-top: 60px; }
   .final-message-card-v3 { padding: 30px 20px; }
   .final-message-title-v3 { font-size: 1.5rem !important; }
+  .final-message-text-v3 { font-size: 1rem; }
+  .target-audience-emphasis-v3 { font-size: 0.95rem; }
+  .closing-statement-v3 { font-size: 1rem; }
+  .emphasis-tag-v3.ant-tag { font-size: 0.9em; padding: 4px 10px; }
+  .final-message-icon-v3 { font-size: 38px; margin-bottom: 15px; }
+
+  .origin-v3-cta-button.ant-btn-primary {
+    font-size: 15px !important;
+    padding: 12px 20px !important;
+  }
+  .origin-v3-cta-button.ant-btn-primary .anticon { /* Adicionando regra para o ícone no botão */
+    margin-right: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline-point-title-v3 { font-size: 1.15rem !important; }
+  .timeline-point-text-v3 { font-size: 0.85rem; }
+  .final-message-title-v3 { font-size: 1.3rem !important; }
+  .final-message-text-v3 { font-size: 0.9rem; }
+  .target-audience-emphasis-v3 { font-size: 0.9rem; }
+  .closing-statement-v3 { font-size: 0.95rem; }
+
+  .origin-v3-cta-button.ant-btn-primary {
+    font-size: 14px !important;
+    padding: 10px 15px !important;
+  }
+   .origin-v3-cta-button.ant-btn-primary .anticon {
+    margin-right: 6px;
+  }
+}
+
+@media (max-width: 360px) {
+    .origin-story-section-v3 .section-title { font-size: 1.8rem !important; }
+    .origin-story-section-v3 .section-subtitle { font-size: 0.9rem !important; }
+    .timeline-point-title-v3 { font-size: 1.1rem !important; }
+    .final-message-title-v3 { font-size: 1.2rem !important; }
+
+    .origin-v3-cta-button.ant-btn-primary {
+        font-size: 13px !important;
+        padding: 8px 10px !important;
+    }
 }

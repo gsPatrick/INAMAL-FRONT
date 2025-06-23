@@ -8,10 +8,13 @@ import {
   AimOutlined,
   RiseOutlined,
   MessageFilled,
-  BranchesOutlined, // Para conexões/evolução
-  RocketOutlined,   // Para lançamento/solução
+  BranchesOutlined,
+  RocketOutlined,
+  PlayCircleOutlined, // Adicionar para o novo botão, se desejar um ícone
 } from '@ant-design/icons';
 import './OriginStorySection.css';
+// PASSO 1: Importar handleCheckout
+import { handleCheckout } from '../../services/checkoutService';
 
 const { Title, Paragraph } = Typography;
 
@@ -23,7 +26,7 @@ const OriginStorySection = () => {
       title: "Anos de Experiência em Campo",
       text: "Com o projeto Almoxarife na Prática, percorremos o Brasil, mergulhando na realidade de inúmeros almoxarifados e identificando padrões de desafios.",
       delay: 1,
-      graphicElement: ( // Gráficos mais elaborados aqui
+      graphicElement: (
         <div className="timeline-graphic experience-graphic-v3">
           <div className="map-path">
             <svg viewBox="0 0 100 50"><path d="M5 45 Q 25 5, 45 25 T 85 15" fill="none" strokeLinecap="round" strokeWidth="2.5"/></svg>
@@ -40,7 +43,7 @@ const OriginStorySection = () => {
       delay: 2,
       graphicElement: (
         <div className="timeline-graphic reality-graphic-v3">
-          <div className="gear gear-1"><RocketOutlined/></div> {/* Usando ícone como "engrenagem" */}
+          <div className="gear gear-1"><RocketOutlined/></div>
           <div className="gear gear-2"><AimOutlined/></div>
         </div>
       )
@@ -61,7 +64,7 @@ const OriginStorySection = () => {
     },
     {
       id: 'solution',
-      icon: <RocketOutlined />, // Mudado para Rocket para "lançamento" da solução
+      icon: <RocketOutlined />,
       title: "A Gênese de uma Solução Inovadora",
       text: "Assim nasceu o INAMAL: uma ferramenta para simplificar diagnósticos, dar voz ao almoxarifado e catalisar a transformação e valorização do setor.",
       delay: 4,
@@ -78,12 +81,10 @@ const OriginStorySection = () => {
 
   return (
     <div className="origin-story-section-v3" id="origin-story-section">
-      {/* Elementos de fundo da seção */}
-      <div className="section-bg-dots-pattern"></div> {/* Pattern de pontos */}
-      <div className="section-bg-gradient-overlay"></div> {/* Gradiente overlay */}
+      <div className="section-bg-dots-pattern"></div>
+      <div className="section-bg-gradient-overlay"></div>
       <div className="section-bg-blur-shape shape-story-1-v3"></div>
       <div className="section-bg-blur-shape shape-story-2-v3"></div>
-
 
       <div className="container">
         <Row justify="center" className="section-header animate-item-v3 delay-0">
@@ -127,7 +128,16 @@ const OriginStorySection = () => {
                 O INAMAL é seu aliado para decifrar o presente e construir um futuro de excelência para seu almoxarifado. Descubra seu potencial e lidere a mudança.
               </Paragraph>
               <Paragraph strong className="target-audience-emphasis-v3">
-                De almoxarifes a diretores, de pequenas empresas a grandes operações: <span className="highlight-text">o INAMAL é para quem ousa evoluir.</span>
+                De almoxarifes a diretores, de pequenas empresas a grandes operações:{' '}
+                {/* PASSO 2: Transformar o span em um botão */}
+                <Button
+                  type="link" // Para parecer um link, mas pode ser 'primary' ou 'default'
+                  className="inline-cta-button highlight-text" // Classes para estilização
+                  onClick={(e) => handleCheckout(e.currentTarget)}
+                  // icon={<PlayCircleOutlined />} // Opcional: adicionar ícone
+                >
+                  o INAMAL é para quem ousa evoluir.
+                </Button>
               </Paragraph>
               <Paragraph className="closing-statement-v3">
                 Maturidade logística é <Tag className="emphasis-tag-v3">Consciência em Ação</Tag>.
@@ -141,8 +151,10 @@ const OriginStorySection = () => {
             <Button
               type="primary"
               size="large"
-              className="origin-v3-cta-button"
+              className="origin-v3-cta-button" // Este é o botão principal da seção
               icon={<RiseOutlined />}
+              // PASSO 3: Garantir que este botão também use handleCheckout
+              onClick={(e) => handleCheckout(e.currentTarget)}
             >
               <span>QUERO FAZER PARTE DA MUDANÇA</span>
               <div className="btn-hover-bg"></div>

@@ -1,8 +1,7 @@
 /* src/components/WhatYouGetSection/WhatYouGetSection.css */
-/* Certifique-se de que a classe principal no HTML é what-you-get-section-v3 */
 .what-you-get-section-v3 {
   padding: 100px 40px;
-  background-color: #f0f4f8; /* Levemente diferente, tom de cinza-azulado muito claro */
+  background-color: #f0f4f8;
   overflow: hidden;
   position: relative;
 }
@@ -14,25 +13,22 @@
   z-index: 2;
 }
 
-/* Cabeçalho (mantido da v2) */
 .what-you-get-section-v3 .section-header { text-align: center; margin-bottom: 20px; }
 .what-you-get-section-v3 .section-title { font-size: 2.8rem !important; font-weight: 700 !important; color: #2c3e50 !important; margin-bottom: 15px !important; }
 .what-you-get-section-v3 .section-title .highlight-text { color: #21436e; }
 .what-you-get-section-v3 .section-subtitle { font-size: 1.2rem !important; color: #5a6e8b !important; max-width: 750px; margin: 0 auto 40px auto; }
 
-/* Linha Conectora (mantida da v2) */
 .decorative-connector-line {
   width: 80%; max-width: 600px; height: 120px; margin: 0 auto 40px auto;
   background-image: url("data:image/svg+xml,%3Csvg width='600' height='120' viewBox='0 0 600 120' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 110 Q50 10 150 60 T290 110 Q350 10 450 60 T590 110' stroke='%23c8d4e3' stroke-width='4' stroke-linecap='round' stroke-dasharray='8 8'/%3E%3Ccircle cx='10' cy='110' r='7' fill='%2321436e' opacity='0.7'/%3E%3Ccircle cx='290' cy='110' r='7' fill='%2321436e' opacity='0.7'/%3E%3Ccircle cx='590' cy='110' r='7' fill='%2321436e' opacity='0.7'/%3E%3C/svg%3E");
   background-repeat: no-repeat; background-position: center; background-size: contain;
-  opacity: 0; transform: translateY(20px); animation: fadeInLine 1.5s 0.2s ease-out forwards; /* Delay na animação da linha */
+  opacity: 0; transform: translateY(20px); animation: fadeInLine 1.5s 0.2s ease-out forwards;
 }
 @keyframes fadeInLine { to { opacity:1; transform: translateY(0); } }
 
 
-/* Cards de Features (refinamentos sutis da v2) */
 .included-feature-card.ant-card {
-  border-radius: 18px; /* Ligeiramente mais arredondado */
+  border-radius: 18px;
   box-shadow: 0px 10px 30px -7px rgba(33, 67, 110, 0.1);
   text-align: center; padding: 35px 25px; height: 100%;
   background-color: #ffffff; border: 1px solid #e7edf3;
@@ -46,7 +42,7 @@
 .included-feature-card .ant-card-body { padding: 0 !important; }
 
 .feature-card-icon-wrapper {
-  width: 75px; height: 75px; margin: 0 auto 22px auto; border-radius: 22px; /* Quadrado arredondado */
+  width: 75px; height: 75px; margin: 0 auto 22px auto; border-radius: 22px;
   background: linear-gradient(145deg, #eaf2fa, #f9fcff);
   display: flex; justify-content: center; align-items: center;
   box-shadow: 0px 6px 12px rgba(33, 67, 110, 0.08);
@@ -69,57 +65,56 @@
   position: absolute; bottom: 0; left: 0; width: 100%; height: 6px;
   background: linear-gradient(to right, #21436e, #4a78ad);
   transform: scaleX(0); transform-origin: left;
-  transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1) 0.1s; /* Delay na transição */
+  transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1) 0.1s;
 }
 .included-feature-card.ant-card:hover .card-bottom-decorator { transform: scaleX(1); }
 
 
-/* Caixa de Investimento Aprimorada */
 .inamal-investment-box {
   text-align: center;
   background: #ffffff;
   padding: 40px 35px 35px 35px;
-  border-radius: 24px; /* Mais arredondado */
-  box-shadow: 0 20px 50px -10px rgba(33, 67, 110, 0.15), 0 0 0 1px #e0e9f5; /* Sombra e borda sutil */
+  border-radius: 24px;
+  box-shadow: 0 20px 50px -10px rgba(33, 67, 110, 0.15), 0 0 0 1px #e0e9f5;
   position: relative;
-  overflow: hidden; /* Para o efeito de brilho */
+  overflow: hidden;
 }
-.investment-shine-effect { /* Efeito de brilho sutil */
+.investment-shine-effect {
   position: absolute;
-  top: 0; left: -150%; /* Começa fora da caixa */
+  top: 0; left: -150%;
   width: 100%; height: 100%;
   background: linear-gradient(
     to right,
     rgba(255,255,255,0) 0%,
-    rgba(255,255,255,0.03) 40%, /* Brilho muito sutil */
+    rgba(255,255,255,0.03) 40%,
     rgba(255,255,255,0.06) 50%,
     rgba(255,255,255,0.03) 60%,
     rgba(255,255,255,0) 100%
   );
-  transform: skewX(-25deg); /* Inclina o brilho */
-  animation: shine 7s infinite linear; /* Animação mais lenta */
-  pointer-events: none; /* Não interfere com cliques */
+  transform: skewX(-25deg);
+  animation: shine 7s infinite linear;
+  pointer-events: none;
 }
 @keyframes shine {
   0% { left: -150%; }
-  40% { left: 150%; } /* Movimento do brilho */
-  100% { left: 150%; } /* Mantém fora para o ciclo */
+  40% { left: 150%; }
+  100% { left: 150%; }
 }
 
-.investment-badge-icon { /* Ícone de "selo" ou "garantia" */
+.investment-badge-icon {
   font-size: 30px;
   color: #21436e;
   background-color: #eaf2fa;
   padding: 12px;
   border-radius: 50%;
   position: absolute;
-  top: -22px; /* Metade para fora */
+  top: -22px;
   left: 50%;
   transform: translateX(-50%);
   box-shadow: 0 4px 10px rgba(33, 67, 110, 0.1);
-  border: 3px solid #ffffff; /* Borda branca para destacar do fundo */
+  border: 3px solid #ffffff;
 }
-.investment-main-content { margin-top: 25px; } /* Espaço para o ícone acima */
+.investment-main-content { margin-top: 25px; }
 .investment-label {
   font-size: 1.05rem;
   color: #5a6e8b;
@@ -127,11 +122,11 @@
   font-weight: 500;
 }
 .investment-amount.ant-typography {
-  font-size: 4rem !important; /* Aumentado */
+  font-size: 4rem !important;
   font-weight: 700 !important;
   color: #21436e !important;
   line-height: 1 !important;
-  margin: 0 0 15px 0 !important; /* Mais margem inferior */
+  margin: 0 0 15px 0 !important;
   letter-spacing: -1px;
 }
 .investment-subtext {
@@ -151,34 +146,48 @@
   color: #7aa0c9;
   font-weight: 500;
 }
-.secure-checkout-text .anticon { margin-right: 6px; }
-
 
 /* Botão CTA Premium */
 .premium-cta-button.ant-btn-primary {
   background: linear-gradient(45deg, #16a085 0%, #1dbf73 50%, #27ae60 100%) !important;
-  background-size: 200% auto !important; /* Para animação do gradiente */
+  background-size: 200% auto !important;
   border: none !important;
-  padding: 16px 45px !important;
+  padding: 16px 35px !important; /* Padding base ajustado */
   height: auto !important;
-  font-size: 1.15rem !important;
+  line-height: 1.5; /* Para melhor quebra de linha */
+  font-size: 1.1rem !important; /* Tamanho da fonte base ajustado */
   font-weight: 700 !important;
   color: white !important;
   box-shadow: 0 10px 25px -5px rgba(29, 191, 115, 0.4), 0 5px 15px -5px rgba(0,0,0,0.1) !important;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important; /* Transição mais suave */
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
   text-transform: uppercase;
   letter-spacing: 0.8px;
-  border-radius: 10px; /* Bordas menos arredondadas */
+  border-radius: 10px;
   position: relative;
-  overflow: hidden; /* Para o efeito de glow */
+  overflow: hidden;
+  display: inline-flex; /* Para alinhamento */
+  align-items: center;
+  justify-content: center;
+  text-align: center; /* Centraliza texto se quebrar */
+  max-width: 100%; /* Botão não ultrapassa o container */
+  white-space: normal; /* Permite quebra de linha no texto */
+  word-break: break-word; /* Opcional */
 }
-.premium-cta-button .anticon { margin-right: 10px; font-size: 1.2em; }
-.premium-cta-button:hover {
-  background-position: right center !important; /* Muda a posição do gradiente no hover */
-  transform: translateY(-5px) scale(1.05) !important;
+
+.premium-cta-button.ant-btn-primary .cta-text { /* Classe adicionada ao span do texto no JSX, se necessário */
+  /* Estilos específicos para o texto, se houver */
+}
+
+.premium-cta-button.ant-btn-primary .anticon {
+  margin-right: 10px;
+  font-size: 1.2em;
+}
+.premium-cta-button.ant-btn-primary:hover {
+  background-position: right center !important;
+  transform: translateY(-5px) scale(1.03) !important; /* Ajuste no scale */
   box-shadow: 0 15px 30px -8px rgba(29, 191, 115, 0.5), 0 8px 20px -8px rgba(0,0,0,0.15) !important;
 }
-.premium-cta-button .cta-glow { /* Efeito de brilho sutil no botão */
+.premium-cta-button .cta-glow {
   position: absolute;
   top: -50%; left: -50%;
   width: 200%; height: 200%;
@@ -192,7 +201,6 @@
   transform: rotate(30deg) scale(1.2);
 }
 
-/* Padrão de Grid Sutil no Fundo */
 .subtle-grid-pattern {
   position: absolute;
   top: 0; left: 0;
@@ -200,36 +208,38 @@
   background-image:
     linear-gradient(to right, rgba(33, 67, 110, 0.03) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(33, 67, 110, 0.03) 1px, transparent 1px);
-  background-size: 50px 50px; /* Tamanho do grid */
+  background-size: 50px 50px;
   z-index: 0;
   opacity: 0.5;
 }
 
-/* Formas de Fundo (mantidas da v2, mas z-index ajustado) */
 .background-shape { position: absolute; border-radius: 50%; z-index: 1; animation: backgroundDrift 60s infinite alternate ease-in-out; }
 .shape-blur-1 { width: 500px; height: 500px; top: 5%; left: -250px; background: radial-gradient(circle, rgba(33, 67, 110, 0.07) 0%, rgba(33, 67, 110, 0) 70%); filter: blur(50px); animation-duration: 70s; opacity: 0.6;}
 .shape-blur-2 { width: 400px; height: 400px; bottom: 0%; right: -200px; background: radial-gradient(circle, rgba(150, 180, 220, 0.07) 0%, rgba(150, 180, 220, 0) 70%); filter: blur(60px); animation-delay: -15s; animation-duration: 80s; opacity: 0.6;}
+@keyframes backgroundDrift { /* Adicionando keyframe que faltava */
+    from { transform: translate(-20px, 10px) scale(0.95) rotate(-5deg); }
+    to { transform: translate(20px, -10px) scale(1.05) rotate(5deg); }
+}
 
-/* Animações de entrada */
+
 .animate-fade-in-up { opacity: 0; transform: translateY(50px); animation: fadeInUpWygV3 0.9s cubic-bezier(0.165, 0.84, 0.44, 1) forwards; }
 @keyframes fadeInUpWygV3 { to { opacity: 1; transform: translateY(0); } }
 
 .delay-0 { animation-delay: 0.1s; }
-.delay-1 { animation-delay: 0.4s; } /* Card 1 e linha */
-.delay-2 { animation-delay: 0.6s; } /* Card 2 */
-.delay-3 { animation-delay: 0.8s; } /* Card 3 */
-.delay-4 { animation-delay: 1.0s; } /* Card 4 */
-.delay-5 { animation-delay: 1.3s; } /* Preço */
-.delay-6 { animation-delay: 1.6s; } /* CTA */
+.delay-1 { animation-delay: 0.4s; }
+.delay-2 { animation-delay: 0.6s; }
+.delay-3 { animation-delay: 0.8s; }
+.delay-4 { animation-delay: 1.0s; }
+.delay-5 { animation-delay: 1.3s; }
+.delay-6 { animation-delay: 1.6s; }
 
 
-/* Responsividade (ajustes da v2, verificar se ainda são necessários) */
-@media (max-width: 991px) { /* md */
+@media (max-width: 991px) {
   .what-you-get-section-v3 { padding: 80px 30px; }
   .feature-card-description { min-height: 130px; }
   .decorative-connector-line { width: 95%; height: 100px; }
 }
-@media (max-width: 767px) { /* sm */
+@media (max-width: 767px) {
   .what-you-get-section-v3 { padding: 60px 20px; }
   .section-title { font-size: 2.2rem !important; }
   .section-subtitle { font-size: 1.1rem !important; }
@@ -241,5 +251,32 @@
   .investment-badge-icon { top: -20px; font-size: 26px; padding: 10px; }
   .investment-main-content { margin-top: 20px; }
   .investment-amount.ant-typography { font-size: 3.2rem !important; }
-  .premium-cta-button.ant-btn-primary { font-size: 1.05rem !important; padding: 14px 35px !important; }
+
+  .premium-cta-button.ant-btn-primary {
+    font-size: 1rem !important; /* Reduz fonte */
+    padding: 14px 25px !important; /* Reduz padding */
+  }
+}
+
+@media (max-width: 480px) {
+    .premium-cta-button.ant-btn-primary {
+        font-size: 0.9rem !important; /* Fonte ainda menor */
+        padding: 12px 20px !important; /* Padding ainda menor */
+    }
+    .premium-cta-button.ant-btn-primary .anticon {
+        margin-right: 8px; /* Menos espaço para o ícone */
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width: 380px) { /* Ajuste para telas um pouco menores que 400px, onde o texto pode começar a apertar */
+    .premium-cta-button.ant-btn-primary {
+        font-size: 0.85rem !important;
+        padding: 12px 15px !important;
+        letter-spacing: 0.5px; /* Reduzir espaçamento entre letras se necessário */
+    }
+     .premium-cta-button.ant-btn-primary .anticon {
+        margin-right: 6px;
+        font-size: 1em;
+    }
 }

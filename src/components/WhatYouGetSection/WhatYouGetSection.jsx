@@ -6,12 +6,15 @@ import {
   RobotOutlined,
   SolutionOutlined,
   GiftOutlined,
-  DollarCircleFilled,
+  // DollarCircleFilled, // Removido se não usado diretamente
   ArrowRightOutlined,
   CheckSquareFilled,
-  SafetyCertificateFilled // Novo ícone para o preço (garantia/valor)
+  SafetyCertificateFilled
 } from '@ant-design/icons';
-import './WhatYouGetSection.css'; // Continuamos usando o mesmo CSS e ajustando-o
+import './WhatYouGetSection.css';
+// PASSO 1: Importar handleCheckout (já estava no seu código, ótimo!)
+import { handleCheckout } from '../../services/checkoutService';
+
 
 const { Title, Paragraph } = Typography;
 
@@ -53,7 +56,7 @@ const WhatYouGetSection = () => {
   ];
 
   return (
-    <div className="what-you-get-section-v3" id="what-you-get-section"> {/* Classe v3 para esta iteração */}
+    <div className="what-you-get-section-v3" id="what-you-get-section">
       <div className="container">
         <Row justify="center" className="section-header animate-fade-in-up delay-0">
           <Col>
@@ -84,7 +87,7 @@ const WhatYouGetSection = () => {
         </Row>
 
         <Row justify="center" style={{ marginTop: '80px' }} className="animate-fade-in-up delay-5">
-          <Col xs={24} md={20} lg={16} xl={12}> {/* Coluna para controlar a largura da caixa de preço */}
+          <Col xs={24} md={20} lg={16} xl={12}>
             <div className="inamal-investment-box">
               <div className="investment-shine-effect"></div>
               <SafetyCertificateFilled className="investment-badge-icon" />
@@ -109,6 +112,8 @@ const WhatYouGetSection = () => {
               size="large"
               className="premium-cta-button"
               icon={<ArrowRightOutlined />}
+              // PASSO 2: Adicionar o onClick para chamar handleCheckout
+              onClick={(e) => handleCheckout(e.currentTarget)}
             >
               <span className="cta-text">Quero Transformar Meu Almoxarifado Agora</span>
               <span className="cta-glow"></span>
@@ -118,7 +123,7 @@ const WhatYouGetSection = () => {
       </div>
       <div className="background-shape shape-blur-1"></div>
       <div className="background-shape shape-blur-2"></div>
-      <div className="subtle-grid-pattern"></div> {/* Novo padrão de grid sutil */}
+      <div className="subtle-grid-pattern"></div>
     </div>
   );
 };

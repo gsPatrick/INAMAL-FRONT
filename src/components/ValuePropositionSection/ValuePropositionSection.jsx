@@ -3,6 +3,7 @@ import React from 'react';
 import { Typography, Row, Col, Button } from 'antd';
 import { RocketOutlined, CheckCircleOutlined, GiftOutlined, ThunderboltFilled } from '@ant-design/icons';
 import './PricingHighlightSection.css';
+import { handleCheckout } from '../../services/checkoutService';
 
 const { Title, Paragraph } = Typography;
 
@@ -55,7 +56,7 @@ const PricingHighlightSection = () => {
               size="large"
               className="ph-cta-button animate-fade-in-up delay-4"
               icon={<RocketOutlined />}
-              onClick={handleCTAClick}
+              onClick={(e) => handleCheckout(e.currentTarget)} 
             >
               DESBLOQUEAR MEU DIAGNÓSTICO AGORA
             </Button>

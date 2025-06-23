@@ -1,17 +1,16 @@
 // src/components/ImpactSection/ImpactSection.jsx
-// (JSX da V2, como fornecido anteriormente, é adequado. Vamos focar nas mudanças de CSS.)
-// Apenas uma pequena adição de classe para o título para animação no highlight.
 import React from 'react';
 import { Row, Col, Typography, Button } from 'antd';
 import {
   FundViewOutlined,
   RocketOutlined,
   SettingOutlined,
-  RightCircleFilled, // Ícone para o novo CTA
+  RightCircleFilled,
 } from '@ant-design/icons';
-import './ImpactSection.css'; // Usaremos o mesmo arquivo CSS, mas com as classes -v2 e -v3
-
-import impactImage from '../../assets/images/slider/almoxarifado4.jpg'; // Certifique-se que este caminho é válido
+import './ImpactSection.css';
+import impactImage from '../../assets/images/slider/almoxarifado4.jpg';
+// PASSO 1: Importar handleCheckout
+import { handleCheckout } from '../../services/checkoutService';
 
 const { Title, Paragraph } = Typography;
 
@@ -35,7 +34,7 @@ const ImpactSection = () => {
   ];
 
   return (
-    <section className="impact-section-v3" id="impact-section-v3"> {/* Classe V3 para esta iteração */}
+    <section className="impact-section-v3" id="impact-section-v3">
       <div className="container">
         <Row gutter={[48, 32]} align="middle" className="impact-row-v3">
           <Col xs={24} md={12} lg={14} className="impact-image-col-v3 animate-slide-in-left-v3 delay-0">
@@ -54,18 +53,16 @@ const ImpactSection = () => {
 
             <div className="impact-features-list-v3">
               {impactFeatures.map((feature, index) => (
-                // Adicionando uma classe de animação base e um delay específico
                 <div
                   key={index}
                   className="impact-feature-item-v3"
-                  // Aplicando animação e delay via style para facilitar a cascata
                   style={{
-                    animationName: 'fadeInUpImpactV3', // Nome da animação definida no CSS
+                    animationName: 'fadeInUpImpactV3',
                     animationDuration: '0.7s',
                     animationFillMode: 'forwards',
                     animationTimingFunction: 'ease-out',
-                    animationDelay: `${0.4 + index * 0.2}s`, // 0.4s, 0.6s, 0.8s
-                    opacity: 0, // Começa invisível
+                    animationDelay: `${0.4 + index * 0.2}s`,
+                    opacity: 0,
                   }}
                 >
                   <div className="feature-item-icon-wrapper-v3">
@@ -78,26 +75,27 @@ const ImpactSection = () => {
                 </div>
               ))}
             </div>
-            
+
             <Button
               type="primary"
               size="large"
               className="impact-cta-button-v3"
               icon={<RightCircleFilled />}
-              // Animação e delay para o botão CTA
+              // PASSO 2: Adicionar o onClick para chamar handleCheckout
+              onClick={(e) => handleCheckout(e.currentTarget)}
               style={{
                 animationName: 'fadeInUpImpactV3',
                 animationDuration: '0.7s',
                 animationFillMode: 'forwards',
                 animationTimingFunction: 'ease-out',
-                animationDelay: `${0.4 + impactFeatures.length * 0.2 + 0.1}s`, // Delay após o último card
+                animationDelay: `${0.4 + impactFeatures.length * 0.2 + 0.1}s`,
                 opacity: 0,
               }}
             >
               <span>Descobrir Meu Potencial</span>
               <span className="btn-glow-v3"></span>
             </Button>
-            
+
           </Col>
         </Row>
       </div>
