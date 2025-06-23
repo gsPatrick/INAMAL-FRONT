@@ -1,7 +1,7 @@
 // src/services/checkoutService.js
 
 // A URL da sua API de backend. Vamos usar variáveis de ambiente para isso.
-const API_URL = import.meta.env.VITE_API_URL || 'https://geral-inamal-gateway.r954jc.easypanel.host';
+const API_URL = 'https://geral-inamal-gateway.r954jc.easypanel.host';
 
 /**
  * Função assíncrona para iniciar o processo de checkout.
